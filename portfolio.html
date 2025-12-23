@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfolio</title>
+  <link rel="stylesheet" href="./css/portfolio.css"/>
+</head>
+<body>
+ <header class="site-header">
+  <div class="container">
+    <div class="brand">ポートフォリオ１号</div>
+
+    <!-- 追加: モバイル用トグル -->
+    <button class="nav-toggle" aria-controls="site-nav" aria-expanded="false" aria-label="メニュー">
+      Menu
+    </button>
+
+    <!-- 変更: id付与 -->
+    <nav id="site-nav" class="nav">
+      <a href="#works">Works</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+   <!-- <button class="js-motion-toggle" aria-pressed="false" title="アニメON/OFF">Motion: On</button>
+  </div>-->
+</header>
+
+  <!-- A: Hero -->
+<section class="section hero">
+  <div class="container hero-grid">
+    <div class="hero-text">
+      <h1 class="h1">中小事業のサイト制作<br>保守・改善を支援します</h1>
+      <p class="lead">速い表示、更新しやすい設計、継続改善。</p>
+      <a class="btn btn-primary" href="contact">無料サイト診断</a>
+    </div>
+    
+    <figure class="hero-media">
+      <img src="images/pasokon1.JPG"  
+        alt="ノートPCで作業する様子"
+        width="1500" height="900"  />        
+    </figure>
+  </div>
+
+  <div class="wiggle" aria-hidden="true"></div>
+</section>
+
+
+  <!-- B: Works -->
+  <section id="works" class="section section--full">
+    <div class="container grid3">
+      <article class="card reveal"><h3>◯◯クリニック</h3><p>速度最適化と導線再設計</p></article>
+      <article class="card reveal"><h3>◯◯カフェ</h3><p>メニュー更新性と写真最適化</p></article>
+      <article class="card reveal"><h3>◯◯サロン</h3><p>予約CV導線と計測導入</p></article>
+    </div>
+  </section>
+
+  <!-- C: Pricing -->
+  <section id="pricing" class="section section--full">
+    <div class="container grid3">
+      <div class="plan card reveal"><h3>Lite</h3><p>更新・バックアップ</p><div class="price">¥5,500/月</div></div>
+      <div class="plan card reveal"><h3>Standard</h3><p>＋軽微改修2h・月次レポ</p><div class="price">¥16,500/月</div></div>
+      <div class="plan card reveal"><h3>Pro</h3><p>＋改善提案・小テスト</p><div class="price">¥33,000/月</div></div>
+    </div>
+  </section>
+
+  <!-- D: Contact -->
+  <section id="contact" class="section section--full">
+    <div class="container narrow">
+      <form class="form card reveal" onsubmit="alert('送信デモ');return false;">
+        <label>お名前<input required></label>
+        <label>メール<input type="email" required></label>
+        <label>ご相談<textarea rows="4" required></textarea></label>
+        <button class="btn">送信</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="site-footer"><div class="container">© <span id="y"></span> Your Name</div></footer>
+  <script src="./js/portfolio.js"></script>
+</body>
+</html>

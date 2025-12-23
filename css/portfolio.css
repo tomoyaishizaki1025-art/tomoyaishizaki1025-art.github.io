@@ -1,0 +1,293 @@
+@charset "UTF-8";
+
+/* =========================================================
+   0) 変数（テーマカラー / 幅）
+   ====================================================== */
+:root {
+  --bg: #0F172A;
+  --surface: #111827;
+  --text: #E5E7EB;
+  --muted: #334155;
+  --accent: #93C5FD;
+  --accent2: #C4B5FD;
+  --w: 1120px;
+
+  /* ナビゲーション */
+  --nav-base: #e8dfcc;   /* ベージュ寄りの白 */
+  --nav-hover: #a5f3fc;  /* 水色（ホバー） */
+}
+
+/* =========================================================
+   1) リセット / ベース
+   ====================================================== */
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+
+body {
+  font: 16px / 1.7 system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans JP", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* コンテンツの横幅と左右パディング */
+.container {
+  max-width: var(--w);
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* =========================================================
+   2) ヘッダー（ナビゲーション）
+   ====================================================== */
+.site-header {
+  position: sticky;
+  top: 0;
+  background: linear-gradient(90deg, #1e1b4b 0%, #312e81 100%);
+  backdrop-filter: blur(8px);
+  width: 100%;
+  padding: 20px 0;
+  z-index: 10;
+}
+
+.site-header .container {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  height: auto;
+  min-height: 72px;
+  padding: 0 32px;
+}
+
+.brand { margin-right: auto; }
+
+/* ---------- ナビゲーション ---------- */
+.nav {
+  display: flex;
+  gap: 28px;
+  margin-left: auto;
+}
+/* ロゴ（Your Name）を少し大きく */
+.brand {
+  font-size: 40px;     /* または 1.25rem */
+  font-weight: 700;    /* 太字で見出し感を出す */
+}
+
+/* ナビゲーションのリンク（Works / Pricing / Contact）をやや拡大 */
+.nav a {
+  font-size: 30px;     /* 通常より+2px程度で視認性UP */
+  font-weight: 600;
+}
+
+.nav a {
+  display: inline-block;
+  color: var(--nav-base);
+  text-decoration: none;
+  font-family: "Noto Sans JP", "Inter", sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin: 0 15px;
+  transition: color 0.25s ease, transform 0.25s ease, text-shadow 0.25s ease;
+}
+
+/* ホバー時のエフェクト（文字だけ光る） */
+.nav a:hover,
+.nav a:focus {
+  color: var(--nav-hover);
+  transform: translateY(-1px) scale(1.06);
+  text-shadow: 0 0 10px currentColor, 0 0 18px currentColor;
+}
+
+/* ---------- モバイル用トグル ---------- */
+.nav-toggle {
+  display: none;
+  border: 1px solid rgba(255,255,255,.25);
+  background: transparent;
+  color: #fff;
+  padding: .4rem .7rem;
+  border-radius: .5rem;
+}
+
+/* ---------- モバイルメニュー ---------- */
+@media (max-width: 900px) {
+  .nav-toggle { display: inline-block; }
+
+  .nav {
+    position: absolute;
+    right: 16px;
+    top: calc(100% + 8px);
+    background: rgba(10,12,28,.95);
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 12px;
+    padding: 12px 14px;
+    display: block;
+    width: min(82vw, 320px);
+    transform: translateY(-16px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s ease, transform .2s ease;
+    box-shadow: 0 10px 24px rgba(0,0,0,.35);
+  }
+
+  .brand { font-size: 18px; }
+  .nav a { font-size: 16px; }
+
+
+  .nav a {
+    display: block;
+    padding: 10px 6px;
+    font-size: 16px;
+  }
+
+  .nav.is-open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+/* =========================================================
+   3) ヒーローセクション
+   ====================================================== */
+.hero {
+  position: relative;
+  overflow: hidden;
+  min-height: 90vh;
+  display: grid;
+  place-items: center;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: clamp(24px, 5vw, 64px);
+  max-width: clamp(1300px, 90vw, 2000px);
+  width: 100%;
+  margin-inline: auto;
+  align-items: center;
+  justify-items: center;
+}
+
+.hero-text {
+  max-width: 80ch;
+  justify-self: end;
+  text-align: left;
+}
+
+.hero-media {
+  margin: 0;
+  justify-self: start;
+}
+
+.hero-media img {
+  width: 100%;
+  height: auto;
+  max-width: clamp(360px, 70vw, 2000px);
+  max-height: clamp(260px, 70vh, 560px);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.25);
+  object-fit: cover;
+}
+
+.wiggle {
+  z-index: 0;
+  inset: -25%;
+}
+.hero .container, .hero-grid {
+  position: relative;
+  z-index: 1;
+}
+
+/* モバイル（縦並び） */
+@media (max-width: 900px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero-media { order: 2; }
+  .hero-text { order: 1; }
+}
+
+/* =========================================================
+   4) セクション共通（Works / Pricing / Contact）
+   ====================================================== */
+.section--full {
+  min-height: 100vh;
+  display: grid;
+  padding: 8vh 0;
+}
+
+.section--full .container {
+  max-width: none;
+  width: 100%;
+  padding-left: 5vw;
+  padding-right: 5vw;
+}
+
+/* ---- Works ---- */
+.grid3 {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid rgba(255, 255, 255, .06);
+  border-radius: 16px;
+  padding: 16px;
+}
+
+/* ---- Contact ---- */
+.narrow { max-width: 720px; }
+
+/* =========================================================
+   5) タイポグラフィ
+   ====================================================== */
+.h1 {
+  font-size: clamp(24px, 4vw, 40px);
+  margin: .2em 0;
+}
+
+.lead { opacity: .9; }
+
+/* =========================================================
+   6) ボタン / コンポーネント
+   ====================================================== */
+.btn {
+  display: inline-block;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, .2);
+}
+
+.btn-primary {
+  border-color: transparent;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  color: #0b1120;
+}
+
+/* =========================================================
+   7) フッター
+   ====================================================== */
+footer {
+  opacity: .8;
+  padding: 24px 0;
+  border-top: 1px solid rgba(255, 255, 255, .06);
+}
+
+/* =========================================================
+   8) アニメーション / ユーティリティ
+   ====================================================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity .5s, transform .5s;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* =========================================================
+   9) メディアクエリまとめ
+   ====================================================== */
+@media (max-width: 900px) {
+  .grid3 { grid-template-columns: 1fr; }
+}
