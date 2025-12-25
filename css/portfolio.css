@@ -233,7 +233,7 @@ html, body {
 /* ③ Worksのカード（縦長を止めて、サイズ感を揃える） */
 .section--full .works-container .card {
   padding: 18px;
-  min-height: 400px;          /* ←小さくしたいなら 160 とか */
+  min-height: 450px;
   display: flex;
   flex-direction: column;
   gap: 10px;                  /* ←中の余白 */
