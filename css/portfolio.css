@@ -221,37 +221,36 @@ body {
 }
 
 /* ---- Works ---- */
+/* ---- Works ---- */
 .grid3 {
   display: grid;
   gap: 16px;
   grid-template-columns: repeat(3, 1fr);
 }
 
+/* 共通カード（Works / Pricing 共用） */
 .card {
   background: var(--surface);
   border: 1px solid rgba(255, 255, 255, .06);
   border-radius: 16px;
   padding: 16px;
-}
-.card {
-  background: var(--surface);
-  border: 1px solid rgba(255, 255, 255, .06);
-  border-radius: 16px;
-  padding: 16px;
-
-  /* ↓ ここから追加 */
-  aspect-ratio: 1 / 1;
   display: flex;
   flex-direction: column;
 }
-/* Works専用：横幅を制限 */
-.works-container {
-  max-width: 1100px;   /* ← ここが効きます */
+
+/* Worksだけ：全幅指定を打ち消して横幅を制限 */
+.section--full .container.works-container {
+  max-width: 1100px;
+  width: min(1100px, 100%);
   margin: 0 auto;
+  padding-left: 16px;
+  padding-right: 16px;
 }
 
-/* ---- Contact ---- */
-.narrow { max-width: 720px; }
+/* Worksだけ：カードのサイズ感を調整 */
+.section--full .works-container .card {
+  aspect-ratio: 4 / 3; /* 正方形なら 1 / 1 */
+}
 
 /* =========================================================
    5) タイポグラフィ
