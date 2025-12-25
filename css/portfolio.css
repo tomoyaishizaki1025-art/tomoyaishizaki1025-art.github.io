@@ -236,6 +236,7 @@ html, body {
   min-height: 450px;
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
   gap: 10px;                  /* ←中の余白 */
 }
 
