@@ -448,11 +448,7 @@ footer {
 }
 
 /* PC：左 画像 / 右 テキスト（画角内に収める） */
-@media (min-width: 901px){
-  .hero-grid{
-    grid-template-columns: minmax(0, 520px) minmax(0, 1fr);
-    align-items: center;
-  }
+
 
   /* 余計な寄せ指定を無効化（崩れの元） */
   .hero-text, .hero-media { justify-self: stretch; }
