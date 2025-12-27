@@ -433,6 +433,40 @@ footer {
     justify-self: stretch;
   }
 }
+/* ===== Hero: ここだけが正、他の hero-grid は触らない（最終上書き） ===== */
+
+/* 共通：はみ出し防止 */
+.hero { padding: clamp(24px, 4vw, 56px) 0; }
+.hero-grid { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+.hero-grid { display: grid; gap: clamp(16px, 3vw, 56px); }
+
+/* モバイル：縦並び（テキスト→画像の順なら order で） */
+@media (max-width: 900px){
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero-text { order: 1; text-align: left; max-width: 68ch; }
+  .hero-media { order: 2; }
+}
+
+/* PC：左 画像 / 右 テキスト（画角内に収める） */
+@media (min-width: 901px){
+  .hero-grid{
+    grid-template-columns: minmax(0, 520px) minmax(0, 1fr);
+    align-items: center;
+  }
+
+  /* 余計な寄せ指定を無効化（崩れの元） */
+  .hero-text, .hero-media { justify-self: stretch; }
+}
+
+/* 画像：親の枠内で収める（はみ出し防止） */
+.hero-media img{
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  max-height: min(56vh, 520px);
+  object-fit: cover;
+  display: block;
+}
 
 
 
