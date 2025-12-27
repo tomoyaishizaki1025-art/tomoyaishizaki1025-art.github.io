@@ -388,7 +388,11 @@ footer {
     margin: 0 8px;                            /* 15→8 */
   }
 }
-
+/* ===== Hero 微調整（最後に置く） ===== */
+@media (min-width: 901px) {
+  .hero-media { margin-top: 24px; }
+  .hero-text  { margin-top: -24px; }
+}
 
 /* ===== DEBUG: まず見える化（あとで消す） ===== */
 #works .card{
