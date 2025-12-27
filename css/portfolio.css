@@ -404,19 +404,7 @@ footer {
     justify-self: center !important;
   }
 }
-@media (min-width: 901px){
-  .hero-grid{
-    display: grid;
-    grid-template-columns: 0.9fr 1.1fr; /* まず無難な比率 */
-    align-items: center;
-    gap: clamp(24px, 4vw, 56px);
-    max-width: 1120px;       /* ←広すぎると散るので固定推奨 */
-    margin-inline: auto;
-  }
 
-  .hero-media{ justify-self: start; }
-  .hero-text { justify-self: start; } /* まずstartで揃える */
-}
 
 
 /* ===== DEBUG: まず見える化（あとで消す） ===== */
