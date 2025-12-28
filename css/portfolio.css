@@ -322,6 +322,11 @@ body {
   color: var(--text);
   font: inherit;
 }
+/* Pricingは常に上揃え・高さ自動（Worksのcard指定に引っ張られない） */
+#pricing .plan.card{
+  min-height: auto;
+  display: block;       /* flexの影響を切る（安全策） */
+}
 
 /* 送信ボタンを見やすく */
 .form .btn{
