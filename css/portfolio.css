@@ -1,33 +1,38 @@
 @charset "UTF-8";
 
 /* =========================================================
-  0) 変数
-====================================================== */
+  0) Variables
+========================================================= */
 :root{
   --bg:#0F172A;
   --surface:#172554;
   --text:#E5E7EB;
-  --muted:#334155;
+  --muted:#94A3B8;
+
   --accent:#93C5FD;
   --accent2:#C4B5FD;
 
   --w:1120px;
 
-  /* ナビ */
   --nav-base:#e8dfcc;
   --nav-hover:#a5f3fc;
 
-  /* セクション余白（ここだけ触れば全体が揃う） */
-  --section-pad: 72px;     /* PC */
-  --section-pad-sp: 56px;  /* SP */
-  --stack-gap: 24px;       /* Works→Pricingの間など */
+  --radius:22px;
+  --radius-sm:16px;
+
+  --border: rgba(255,255,255,.10);
+  --border-strong: rgba(255,255,255,.14);
+
+  /* デバッグ水平線の位置（px）。揃い確認で数値を動かす */
+  --debug-line-y: 420px;
 }
 
 /* =========================================================
-  1) リセット / ベース
-====================================================== */
+  1) Reset / Base
+========================================================= */
 *{ box-sizing:border-box; }
-html,body{ margin:0; overflow-x:hidden; }
+html,body{ margin:0; }
+html,body{ overflow-x:hidden; }
 
 body{
   font:16px/1.7 system-ui,-apple-system,Segoe UI,Roboto,"Noto Sans JP",sans-serif;
@@ -35,18 +40,26 @@ body{
   color:var(--text);
 }
 
-img{ max-width:100%; display:block; }
+img{ max-width:100%; height:auto; display:block; }
 
-/* コンテンツ幅 */
+/* Layout container */
 .container{
   max-width:var(--w);
   margin:0 auto;
   padding:0 16px;
 }
 
+/* Base card (共通の見た目だけ) */
+.card{
+  background: rgba(255,255,255,.03);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 10px 28px rgba(0,0,0,.22);
+}
+
 /* =========================================================
-  2) ヘッダー
-====================================================== */
+  2) Header / Nav
+========================================================= */
 .site-header{
   position:sticky;
   top:0;
@@ -105,7 +118,7 @@ img{ max-width:100%; display:block; }
   border-radius:.5rem;
 }
 
-/* タブレット */
+/* Tablet */
 @media (max-width:1024px){
   .site-header{ padding:10px 0; }
   .site-header .container{
@@ -114,10 +127,13 @@ img{ max-width:100%; display:block; }
     gap:16px;
   }
   .brand{ font-size:24px; }
-  .nav a{ font-size:18px; margin:0 8px; }
+  .nav a{
+    font-size:18px;
+    margin:0 8px;
+  }
 }
 
-/* モバイルメニュー */
+/* Mobile menu */
 @media (max-width:600px){
   .nav-toggle{ display:inline-block; }
 
@@ -129,7 +145,6 @@ img{ max-width:100%; display:block; }
     border:1px solid rgba(255,255,255,.08);
     border-radius:12px;
     padding:12px 14px;
-
     display:block;
     width:min(82vw,320px);
 
@@ -158,8 +173,8 @@ img{ max-width:100%; display:block; }
 }
 
 /* =========================================================
-  3) ヒーロー（あなたの既存構造を尊重）
-====================================================== */
+  3) Hero
+========================================================= */
 .hero{
   position:relative;
   overflow:hidden;
@@ -185,48 +200,51 @@ img{ max-width:100%; display:block; }
 }
 
 @media (min-width:901px){
-  .hero-grid{ grid-template-columns:minmax(0,520px) minmax(0,1fr); }
+  .hero-grid{
+    grid-template-columns:minmax(0,520px) minmax(0,1fr);
+  }
   .hero-text,.hero-media{ justify-self:stretch; }
 }
 
-.hero-text{ text-align:left; max-width:80ch; }
+.hero-text{
+  text-align:left;
+  max-width:80ch;
+}
+
 .hero-media{ margin:0; }
 
 .hero-media img{
   width:100%;
-  height:auto;
   max-height:min(56vh,520px);
   object-fit:cover;
   border-radius:16px;
   box-shadow:0 10px 30px rgba(0,0,0,.25);
 }
 
-/* 背景アニメ */
+/* 背景アニメがある場合（そのまま） */
 .wiggle{ z-index:0; inset:-25%; }
-.hero .container,
 .hero-grid{ position:relative; z-index:1; }
 
 /* =========================================================
-  4) セクション共通（ここで全体のリズムを支配）
-====================================================== */
+  4) Sections (Works / Pricing / Contact)
+========================================================= */
 .section{
-  padding:var(--section-pad) 0;
+  padding:88px 0;
 }
-
 @media (max-width:600px){
-  .section{ padding:var(--section-pad-sp) 0; }
+  .section{ padding:64px 0; }
 }
 
 .section h2{
   margin:0 0 18px;
 }
 
-/* 3カラム→2→1（共通） */
+/* Grid */
 .grid3{
   display:grid;
   grid-template-columns:repeat(3, minmax(0,1fr));
-  gap:20px;
-  align-items:start; /* ← これで “縦揃わない” 系の事故をまず止める */
+  gap:24px;
+  align-items:stretch; /* ✅ 行内カードの高さを揃える */
 }
 
 @media (max-width:1024px){
@@ -237,76 +255,75 @@ img{ max-width:100%; display:block; }
 }
 
 /* =========================================================
-  5) カード共通（Works/Pricing/Contactで見た目が揃う）
-====================================================== */
-.card{
-  background: rgba(255,255,255,.02);
-  border: 1px solid rgba(255,255,255,.08);
-  border-radius: 16px;
-  padding: 18px;
-}
-
-/* 見出し等のデフォルトマージン事故を止める */
-.card h3{ margin:0 0 6px; }
-.card p{  margin:0; opacity:.9; }
-
-/* =========================================================
-  6) Works（Coming Soon）
-====================================================== */
-/* Worksだけ横幅広げる */
+  4.1) Works (Coming Soon)
+  - ここで“縦揃い”を確実に固定する
+========================================================= */
 .section--full .container.works-container{
   max-width:1500px;
   width:100%;
+  margin:0 auto;
+  padding:56px 16px; /* ✅ 上下余白はここで一元管理 */
 }
 
-/* ★ここが本丸：Worksの上下余白を小さくして “Pricingが沈む” を潰す */
-#works.section{
-  padding-bottom: 0;                  /* Worksの下を詰める */
-}
-#works .works-container{
-  padding-top: 24px;                  /* 上は少しだけ */
-  padding-bottom: var(--stack-gap);   /* Pricingとの距離をここで管理 */
-}
-
-/* Worksカードは「必要高さ」だけ */
+/* ✅ Worksカード：構造を固定（これで毎回同じ位置から文字が始まる） */
 #works .works-container .card{
   display:flex;
   flex-direction:column;
-  justify-content:flex-start;
+  padding:18px;
+  gap:14px;                 /* 画像→テキスト間隔を固定 */
+  overflow:hidden;
+}
+
+/* ✅ 画像：高さを “比率” で統一（画面幅に応じて自然に揃う） */
+#works .works-container .card img{
+  width:100%;
+  aspect-ratio: 16 / 9;     /* ← ここがポイント（全カード同じ比率） */
+  object-fit:cover;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+}
+
+/* ✅ テキストの開始位置と余白を固定 */
+#works .works-container .card h3{
+  margin:0;
+  font-size:20px;
+  line-height:1.35;
+}
+#works .works-container .card p{
+  margin:0;
+  opacity:.9;
+}
+
+/* 「Coming Soon」3枚とPricingの距離感をここで調整（1箇所だけ触る） */
+#works.section{ padding-bottom:32px; }
+#pricing.section{ padding-top:32px; }
+
+/* =========================================================
+  4.2) Pricing
+========================================================= */
+#pricing .plan.card{
+  padding:22px;
+  display:flex;
+  flex-direction:column;
   gap:10px;
 }
 
-/* 画像は高さ固定で揃える（縦のズレの原因を消す） */
-#works .works-container .card img{
-  width:100%;
-  height:220px;        /* 200〜260で好みに調整 */
-  object-fit:cover;
-  border-radius: 12px;
+#pricing .plan h3{
+  margin:0;
+  font-size:22px;
 }
-
-/* =========================================================
-  7) Pricing（Worksの影響を受けないよう隔離）
-====================================================== */
-/* ★Pricingの上を詰める（Worksの直後にキュッと上がる） */
-#pricing.section{
-  padding-top: 0;
+#pricing .plan p{
+  margin:0;
+  opacity:.9;
 }
-
-/* Pricingカードの中身 */
-#pricing .plan.card{
-  padding: 22px;
-  display:block; /* flexの影響を切る */
-}
-
 #pricing .plan .price{
   font-size:20px;
   font-weight:700;
-  margin-top: 10px;
 }
 
 /* =========================================================
-  8) Contact
-====================================================== */
+  4.3) Contact
+========================================================= */
 .container.narrow{
   max-width:720px;
   margin:0 auto;
@@ -343,8 +360,8 @@ img{ max-width:100%; display:block; }
 }
 
 /* =========================================================
-  9) タイポ
-====================================================== */
+  5) Typography
+========================================================= */
 .h1{
   font-size:clamp(24px,4vw,40px);
   margin:.2em 0;
@@ -352,8 +369,8 @@ img{ max-width:100%; display:block; }
 .lead{ opacity:.9; }
 
 /* =========================================================
-  10) ボタン
-====================================================== */
+  6) Buttons
+========================================================= */
 .btn{
   display:inline-block;
   padding:10px 14px;
@@ -367,8 +384,8 @@ img{ max-width:100%; display:block; }
 }
 
 /* =========================================================
-  11) フッター
-====================================================== */
+  7) Footer
+========================================================= */
 footer{
   opacity:.8;
   padding:24px 0;
@@ -376,8 +393,8 @@ footer{
 }
 
 /* =========================================================
-  12) アニメーション
-====================================================== */
+  8) Reveal animation
+========================================================= */
 .reveal{
   opacity:0;
   transform:translateY(12px);
@@ -389,14 +406,30 @@ footer{
 }
 
 /* =========================================================
-  99) DEBUG（必要な時だけON）
-  ※ONにするなら、下だけコメントアウト解除
-====================================================== */
-/*
-* { outline: 1px dashed rgba(255,255,255,.08); }
-#works   { outline: 4px solid rgba(255,  0,255,.9) !important; }
-#pricing { outline: 4px solid rgba(  0,255,255,.9) !important; }
-#contact { outline: 4px solid rgba(255,255,  0,.9) !important; }
-.grid3   { outline: 4px dashed rgba(255,120,  0,.9) !important; }
-.card    { outline: 3px solid rgba(120,180,255,.9) !important; }
-*/
+  9) DEBUG（必要な時だけON）
+  - body に class="debug" を付けると発動
+========================================================= */
+body.debug *{ outline: 1px dashed rgba(255,255,255,.08); }
+
+body.debug #works{ outline: 4px solid rgba(255,  0,255,.9) !important; }
+body.debug #pricing{ outline: 4px solid rgba(  0,255,255,.9) !important; }
+body.debug #contact{ outline: 4px solid rgba(255,255,  0,.9) !important; }
+
+body.debug .works-container{ outline: 4px solid rgba(0,255,0,.9) !important; }
+body.debug .grid3{ outline: 4px dashed rgba(255,120,0,.9) !important; }
+body.debug .card{ outline: 3px solid rgba(120,180,255,.9) !important; }
+
+/* ✅「水平線」：揃いの確認用（位置は --debug-line-y を動かす） */
+body.debug .works-container{
+  position: relative;
+}
+body.debug .works-container::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  top: var(--debug-line-y);
+  height:2px;
+  background: rgba(255, 80, 80, .85);
+  pointer-events:none;
+}
