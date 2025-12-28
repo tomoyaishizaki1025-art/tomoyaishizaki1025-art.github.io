@@ -444,3 +444,24 @@ footer{
   outline:3px dashed rgba(255,255,0,.9) !important;
 }
 */
+/* =========================
+   DEBUG: レイアウト可視化
+   （終わったら消す/コメントアウト）
+========================= */
+
+/* 全要素うっすら枠 */
+* { outline: 1px dashed rgba(255,255,255,.08); }
+
+/* セクション単位（どこがどこまでか） */
+#works   { outline: 4px solid rgba(255,  0, 255, .9) !important; } /* マゼンタ */
+#pricing { outline: 4px solid rgba(  0,255,255, .9) !important; } /* シアン */
+#contact { outline: 4px solid rgba(255,255,  0, .9) !important; } /* イエロー */
+
+/* コンテナ系 */
+.works-container { outline: 4px solid rgba(  0,255,  0, .9) !important; } /* グリーン */
+.container       { outline: 2px solid rgba(255,255,255,.25) !important; }
+
+/* グリッドとカード */
+.grid3 { outline: 4px dashed rgba(255,120,  0,.9) !important; } /* オレンジ */
+.card  { outline: 3px solid rgba(120,180,255,.9) !important; } /* 水色 */
+.plan  { outline: 3px dashed rgba(255,180,255,.9) !important; } /* ピンク */
