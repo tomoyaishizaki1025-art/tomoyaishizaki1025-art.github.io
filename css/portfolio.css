@@ -327,6 +327,10 @@ body {
   min-height: auto;
   display: block;       /* flexの影響を切る（安全策） */
 }
+/* セクション全体の上下余白を統一 */
+.section{
+  padding: 88px 0;
+}
 
 /* 送信ボタンを見やすく */
 .form .btn{
