@@ -400,6 +400,33 @@ footer{
   opacity:1;
   transform:none;
 }
+/* ===== 強制：Works下の空白を消してPricingを上に詰める（末尾に置く） ===== */
+
+/* Worksコンテナの上下余白を潰す（ここが“謎の空白”の本命） */
+.section--full .container.works-container{
+  padding: 24px 0 !important;  /* 100px等を強制上書き */
+}
+
+/* Worksセクション自体の下余白も潰す */
+#works{
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* Pricingを上に詰める */
+#pricing{
+  padding-top: 24px !important;
+  margin-top: 0 !important;
+}
+
+/* Pricingの中身は上揃えに固定 */
+#pricing .grid3{
+  align-items: start !important;
+}
+#pricing{
+  min-height: auto !important;
+  display: block !important;
+}
 
 /* =========================================================
    9) DEBUG（必要な時だけON）
