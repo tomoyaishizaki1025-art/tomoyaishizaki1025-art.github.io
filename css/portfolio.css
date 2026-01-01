@@ -433,3 +433,88 @@ body.debug .works-container::after{
   background: rgba(255, 80, 80, .85);
   pointer-events:none;
 }
+/* ===== 明るめ・やさしい配色（プードル系ファビコンに寄せる）=====
+   このブロックを CSS の一番下に貼り付け（上書き用）
+========================================================= */
+:root{
+  /* 全体を“明るいネイビー→パステル”へ */
+  --bg:#F6F8FF;
+  --surface:#FFFFFF;
+  --text:#0F172A;
+  --muted:#475569;
+
+  /* アクセント：やさしい水色×ラベンダー */
+  --accent:#7DD3FC;
+  --accent2:#C4B5FD;
+
+  --nav-base:#0F172A;
+  --nav-hover:#2563EB;
+
+  --border: rgba(15,23,42,.10);
+  --border-strong: rgba(15,23,42,.16);
+}
+
+/* 背景：ふんわり */
+body{
+  background:
+    radial-gradient(900px 520px at 18% 12%, rgba(125,211,252,.35), transparent 55%),
+    radial-gradient(820px 520px at 88% 18%, rgba(196,181,253,.30), transparent 55%),
+    linear-gradient(#F6F8FF, #EEF2FF);
+  color:var(--text);
+}
+
+/* カード：白っぽく・頼みやすく */
+.card{
+  background: rgba(255,255,255,.85);
+  border: 1px solid var(--border);
+  box-shadow: 0 14px 30px rgba(15,23,42,.10);
+}
+
+/* ヘッダー：暗さを抜いてパステルに */
+.site-header{
+  background:linear-gradient(90deg,#DCEBFF 0%, #E9D8FF 100%);
+  border-bottom:1px solid rgba(15,23,42,.06);
+}
+.brand{ color:#0F172A; }
+.nav a{ color:var(--nav-base); }
+.nav a:hover,.nav a:focus{ color:var(--nav-hover); text-shadow:none; }
+
+/* ボタン：柔らかい水色（押しやすい見た目） */
+.btn{
+  background:#fff;
+  color:var(--text);
+  border:1px solid rgba(15,23,42,.14);
+}
+.btn-primary{
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+  color:#0B1020;
+  border-color:transparent;
+  box-shadow: 0 10px 22px rgba(37,99,235,.12);
+}
+
+/* 入力：白背景にして心理ハードル下げる */
+.form input,
+.form textarea{
+  background: rgba(255,255,255,.92);
+  color: var(--text);
+  border:1px solid rgba(15,23,42,.14);
+}
+.form label{ color:#0F172A; }
+
+/* Works画像の枠を少し明るく */
+#works .works-container .card img{
+  border:1px solid rgba(15,23,42,.10);
+}
+
+/* フッター：薄め */
+footer{
+  border-top:1px solid rgba(15,23,42,.08);
+  color: rgba(15,23,42,.70);
+}
+
+/* （任意）背景アニメが暗すぎる場合は薄める */
+.wiggle{ opacity:.18; }
+
+@media (max-width:600px){
+  .nav{ background:rgba(255,255,255,.95); }
+}

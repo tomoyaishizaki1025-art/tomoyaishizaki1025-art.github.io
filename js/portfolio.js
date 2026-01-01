@@ -3,19 +3,23 @@
    *  A. 設定・要素取得
    * ======================================================= */
   const sel = {
-    motionToggle: '.js-motion-toggle', // 「Motion: On/Off」ボタン
-    wiggle: '.wiggle',                  // 波打ち背景（アニメ対象）
-    revealTargets: '.reveal',           // スクロールで出現させる要素
-    inPageLinks: 'a[href^="#"]',        // ページ内アンカー
+    motionToggle: '.js-motion-toggle',
+    wiggle: '.wiggle',
+    revealTargets: '.reveal',
+    inPageLinks: 'a[href^="#"]',
+    header: '.site-header',
+    navToggle: '.nav-toggle',
+    nav: '#site-nav',
   };
 
   const $toggle = document.querySelector(sel.motionToggle);
   const $wiggle = document.querySelector(sel.wiggle);
+  const $header = document.querySelector(sel.header);
+  const $navToggle = document.querySelector(sel.navToggle);
+  const $nav = document.querySelector(sel.nav);
 
   /* =========================================================
    *  B. Motion トグル（背景アニメの一時停止/再開）
-   *     - ボタン押下で animationPlayState を切り替え
-   *     - aria-pressed と ボタン表示文言も同期
    * ======================================================= */
   if ($toggle && $wiggle) {
     $toggle.addEventListener('click', () => {
@@ -28,72 +32,101 @@
 
   /* =========================================================
    *  C. スクロールで要素をふわっと表示（IntersectionObserver）
-   *     - しきい値 0.15 で .reveal に .is-visible を付与
    * ======================================================= */
   const io = new IntersectionObserver(
-    entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) e.target.classList.add('is-visible');
-      });
-    },
+    entries => entries.forEach(e => e.isIntersecting && e.target.classList.add('is-visible')),
     { threshold: 0.15 }
   );
-
   document.querySelectorAll(sel.revealTargets).forEach(el => io.observe(el));
 
   /* =========================================================
-   *  D. リロード時：ハッシュ(#section)が付いていたら削除して最上部へ
-   *     - 最下部に飛んでしまう不具合の回避
+   *  D. ヘッダー高さ（アンカー時のズレ対策）
    * ======================================================= */
+  const getHeaderOffset = () => {
+    if (!$header) return 0;
+    const h = $header.getBoundingClientRect().height || 0;
+    return Math.ceil(h) + 12; // 少し余白
+  };
+
+  /* =========================================================
+   *  E. スムーススクロール（ヘッダー分オフセット / hash残さない）
+   * ======================================================= */
+  const scrollToTarget = (target) => {
+    const y = target.getBoundingClientRect().top + window.pageYOffset - getHeaderOffset();
+    window.scrollTo({ top: y, behavior: 'smooth' });
+  };
+
+  document.querySelectorAll(sel.inPageLinks).forEach(a => {
+    a.addEventListener('click', e => {
+      const href = a.getAttribute('href');
+      if (!href || href === '#') return;
+
+      const target = document.querySelector(href);
+      if (!target) return;
+
+      e.preventDefault();
+      scrollToTarget(target);
+
+      // URLをクリーンに（#を残さない）
+      history.replaceState(null, '', location.pathname + location.search);
+
+      // モバイルメニューは閉じる
+      closeMenu();
+    });
+  });
+
+  // リロード時に # が付いてても最下部に飛ばないように
   window.addEventListener('DOMContentLoaded', () => {
     if (location.hash) {
-      // 履歴は追加せずに URL のハッシュだけ消す
       history.replaceState(null, '', location.pathname + location.search);
-      // 念のためページ先頭へ
       window.scrollTo(0, 0);
     }
   });
 
   /* =========================================================
-   *  E. ページ内リンクのスムーススクロール
-   *     - クリック時にデフォルト遷移を止める
-   *     - scrollIntoView でスムーズに移動
-   *     - その後 URL のハッシュは残さない（再読込時に下へ飛ばない）
+   *  F. モバイルナビ開閉（黒い板の暴走を防ぐ）
    * ======================================================= */
-  document.querySelectorAll(sel.inPageLinks).forEach(a => {
-    a.addEventListener('click', e => {
-      const target = document.querySelector(a.getAttribute('href'));
-      if (!target) return; // 不正なリンクは無視
-      e.preventDefault();
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      // ハッシュを残さないことで URL をクリーンに維持
-      history.replaceState(null, '', location.pathname + location.search);
+  const openMenu = () => {
+    if (!$nav || !$navToggle) return;
+    $nav.classList.add('is-open');
+    $navToggle.setAttribute('aria-expanded', 'true');
+  };
+
+  const closeMenu = () => {
+    if (!$nav || !$navToggle) return;
+    $nav.classList.remove('is-open');
+    $navToggle.setAttribute('aria-expanded', 'false');
+  };
+
+  const isMenuOpen = () => $nav?.classList.contains('is-open');
+
+  if ($navToggle && $nav) {
+    $navToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      isMenuOpen() ? closeMenu() : openMenu();
     });
-  });
+
+    // メニュー内クリックは外側扱いにしない
+    $nav.addEventListener('click', (e) => e.stopPropagation());
+
+    // 画面外クリックでクローズ
+    document.addEventListener('click', () => {
+      if (isMenuOpen()) closeMenu();
+    });
+
+    // ESCで閉じる
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && isMenuOpen()) closeMenu();
+    });
+
+    // スクロールしたら閉じる（“黒い板が残る”体験を消す）
+    window.addEventListener('scroll', () => {
+      if (isMenuOpen()) closeMenu();
+    }, { passive: true });
+
+    // リサイズでPC幅になったら閉じる
+    window.addEventListener('resize', () => {
+      if (window.matchMedia('(min-width: 601px)').matches) closeMenu();
+    });
+  }
 })();
-// === モバイルナビの開閉 ===
-const navToggle = document.querySelector('.nav-toggle');
-const siteNav   = document.querySelector('#site-nav');
-
-if (navToggle && siteNav) {
-  navToggle.addEventListener('click', () => {
-    const open = siteNav.classList.toggle('is-open');
-    navToggle.setAttribute('aria-expanded', String(open));
-  });
-
-  // リンクタップで自動クローズ
-  siteNav.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => {
-      siteNav.classList.remove('is-open');
-      navToggle.setAttribute('aria-expanded', 'false');
-    });
-  });
-
-  // 画面外クリックでクローズ（任意）
-  document.addEventListener('click', (e) => {
-    if (!siteNav.contains(e.target) && !navToggle.contains(e.target)) {
-      siteNav.classList.remove('is-open');
-      navToggle.setAttribute('aria-expanded', 'false');
-    }
-  });
-}
