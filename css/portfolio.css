@@ -337,6 +337,36 @@ img{ max-width:100%; height:auto; display:block; }
   margin:0;
   opacity:.9;
 }
+/* =========================================================
+  Pricing cases（画像カードをWorksと同じ規格に）
+========================================================= */
+#pricing .pricing-cases .card{
+  display:flex;
+  flex-direction:column;
+  padding:18px;
+  gap:14px;
+  overflow:hidden;
+}
+
+/* 画像の見え方を統一（←ここが一番効く） */
+#pricing .pricing-cases .card img{
+  width:100%;
+  aspect-ratio: 16 / 9;
+  object-fit:cover;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+}
+
+/* タイトル・文章の余白とサイズも揃える */
+#pricing .pricing-cases .card h3{
+  margin:0;
+  font-size:20px;
+  line-height:1.35;
+}
+#pricing .pricing-cases .card p{
+  margin:0;
+  opacity:.9;
+}
 
 /* =========================================================
   4.3) Contact
