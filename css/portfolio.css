@@ -1,10 +1,9 @@
 @charset "UTF-8";
 
 /* =========================================================
-  0) Variables（※ここを1箇所に統合：衝突を消す）
+  0) Variables（ここ1箇所だけ）
 ========================================================= */
 :root{
-  /* 明るめ・やさしい配色（プードル系に寄せる） */
   --bg:#F6F8FF;
   --surface:#FFFFFF;
   --text:#0F172A;
@@ -24,7 +23,6 @@
   --border: rgba(15,23,42,.10);
   --border-strong: rgba(15,23,42,.16);
 
-  /* デバッグ水平線の位置（px）。揃い確認で数値を動かす */
   --debug-line-y: 420px;
 }
 
@@ -53,7 +51,7 @@ img{ max-width:100%; height:auto; display:block; }
   padding:0 16px;
 }
 
-/* Base card */
+/* Base card（見た目だけ） */
 .card{
   background: rgba(255,255,255,.85);
   border: 1px solid var(--border);
@@ -62,7 +60,7 @@ img{ max-width:100%; height:auto; display:block; }
 }
 
 /* =========================================================
-  2) Header / Nav（追従：stickyのまま）
+  2) Header / Nav（sticky）
 ========================================================= */
 .site-header{
   position: sticky;
@@ -142,20 +140,16 @@ img{ max-width:100%; height:auto; display:block; }
 }
 
 /* =========================================================
-  2.1) Mobile Nav Overlay（全画面・文字大きく・押しやすく）
-  - JSが .is-open を付け外しする前提（今の実装のままでOK）
+  2.1) Mobile Nav Overlay
 ========================================================= */
 @media (max-width:600px){
   .brand{ font-size: 18px; }
   .nav-toggle{ display:inline-flex; align-items:center; gap:6px; }
 
-  /* 全画面オーバーレイ */
   .nav{
     position: fixed;
     inset: 0;
     z-index: 9999;
-
-    /* ヘッダーの下から出す */
     padding: 92px 18px 24px;
 
     display: flex;
@@ -173,7 +167,7 @@ img{ max-width:100%; height:auto; display:block; }
 
   .nav a{
     font-size: 20px;
-    padding: 16px 14px; /* タップ領域大きく */
+    padding: 16px 14px;
     margin: 0;
     background: rgba(255,255,255,.72);
     border: 1px solid rgba(15,23,42,.10);
@@ -186,7 +180,6 @@ img{ max-width:100%; height:auto; display:block; }
     transform: translateY(0);
   }
 
-  /* 任意：JSで body.nav-open を付けるとスクロール禁止にできる */
   body.nav-open{ overflow: hidden; }
 }
 
@@ -240,12 +233,11 @@ img{ max-width:100%; height:auto; display:block; }
   border: 1px solid rgba(15,23,42,.08);
 }
 
-/* 背景アニメがある場合（そのまま・薄め） */
 .wiggle{ z-index:0; inset:-25%; opacity: .18; }
 .hero-grid{ position:relative; z-index:1; }
 
 /* =========================================================
-  4) Sections (Works / Pricing / Contact)
+  4) Sections
 ========================================================= */
 .section{ padding: 88px 0; }
 @media (max-width:600px){
@@ -269,7 +261,7 @@ img{ max-width:100%; height:auto; display:block; }
 }
 
 /* =========================================================
-  4.1) Works (Coming Soon)
+  4.1) Works Container
 ========================================================= */
 .section--full .container.works-container{
   max-width: 1500px;
@@ -278,101 +270,17 @@ img{ max-width:100%; height:auto; display:block; }
   padding: 56px 16px;
 }
 
-#works .works-container .card{
-  display:flex;
-  flex-direction:column;
-  padding: 18px;
-  gap: 14px;
-  overflow:hidden;
-}
-
-#works .works-container .card img{
-  width:100%;
-  aspect-ratio: 16 / 9;
-  object-fit:cover;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--border);
-}
-
-#works .works-container .card h3{
-  margin:0;
-  font-size: 20px;
-  line-height:1.35;
-}
-#works .works-container .card p{
-  margin:0;
-  opacity:.9;
-}
-
 /* WorksとPricingの間隔 */
 #works.section{ padding-bottom: 32px; }
 #pricing.section{ padding-top: 32px; }
-/* =========================================================
-  Media Card（画像 + テキストのカードを共通化）
-  - Works / Pricing の両方で同じルールにする
-========================================================= */
-
-/* 対象：Worksの .work と Pricingの .pricing-card */
-.media-card{
-  display:flex;
-  flex-direction:column;
-  padding:18px;
-  gap:14px;
-  overflow:hidden;
-}
-
-/* 画像の規格を統一 */
-.media-card > img{
-  width:100%;
-  aspect-ratio: 16 / 9;
-  object-fit:cover;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--border);
-}
-
-/* 見出し・本文の余白を統一 */
-.media-card h3{
-  margin:0;
-  font-size:20px;
-  line-height:1.35;
-}
-.media-card p{
-  margin:0;
-  opacity:.9;
-}
 
 /* =========================================================
-  Pricing（作業例カード：Coming Soon と同じ見た目）
+  Media Card（画像 + テキストのカードを「1本化」）
+  - Works / Pricing の両方に同じルールを適用
 ========================================================= */
-#pricing .pricing-card{
-  display:flex;
-  flex-direction:column;
-  padding:18px;
-  gap:14px;
-  overflow:hidden;
-}
 
-#pricing .pricing-card img{
-  width:100%;
-  aspect-ratio: 16 / 9;
-  object-fit:cover;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--border);
-}
-
-#pricing .pricing-card h3{
-  margin:0;
-  font-size:20px;
-  line-height:1.35;
-}
-
-#pricing .pricing-card p{
-  margin:0;
-  opacity:.9;
-}
-/* =========================================================
-  Pricing cases（画像カードをWorksと同じ規格に）
-========================================================= */
+/* 対象をここでまとめる（←重複を消す肝） */
+#works .works-container .card,
 #pricing .pricing-cases .card{
   display:flex;
   flex-direction:column;
@@ -381,8 +289,8 @@ img{ max-width:100%; height:auto; display:block; }
   overflow:hidden;
 }
 
-/* 画像の見え方を統一（←ここが一番効く） */
-#pricing .pricing-cases .card img{
+#works .works-container .card > img,
+#pricing .pricing-cases .card > img{
   width:100%;
   aspect-ratio: 16 / 9;
   object-fit:cover;
@@ -390,12 +298,14 @@ img{ max-width:100%; height:auto; display:block; }
   border: 1px solid var(--border);
 }
 
-/* タイトル・文章の余白とサイズも揃える */
+#works .works-container .card h3,
 #pricing .pricing-cases .card h3{
   margin:0;
   font-size:20px;
   line-height:1.35;
 }
+
+#works .works-container .card p,
 #pricing .pricing-cases .card p{
   margin:0;
   opacity:.9;
@@ -435,38 +345,6 @@ img{ max-width:100%; height:auto; display:block; }
 .form .btn{
   width: fit-content;
   padding: 10px 16px;
-}
-/* 既存HTMLのクラスを media-card 扱いにする（HTMLを変えないため） */
-#works .work,
-#pricing .pricing-card{
-  /* media-card と同じ指定 */
-  display:flex;
-  flex-direction:column;
-  padding:18px;
-  gap:14px;
-  overflow:hidden;
-}
-
-#works .work > img,
-#pricing .pricing-card > img{
-  width:100%;
-  aspect-ratio: 16 / 9;
-  object-fit:cover;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--border);
-}
-
-#works .work h3,
-#pricing .pricing-card h3{
-  margin:0;
-  font-size:20px;
-  line-height:1.35;
-}
-
-#works .work p,
-#pricing .pricing-card p{
-  margin:0;
-  opacity:.9;
 }
 
 /* =========================================================
