@@ -8,22 +8,22 @@
   <link rel="stylesheet" href="./css/portfolio.css"/>
 </head>
 <body>
- <header class="site-header">
-  <div class="container">
-    <div class="brand">いっしWeb制作</div>
-
-    <!-- 追加: モバイル用トグル -->
-    <button class="nav-toggle" aria-controls="site-nav" aria-expanded="false" aria-label="メニュー">
-      Menu
-    </button>
-
-   <header class="site-header">
+ <header class="site-header" id="top">
   <div class="container">
     <a class="brand" href="#top">いっしWeb制作</a>
 
-    <button class="nav-toggle" type="button" aria-label="メニュー">Menu</button>
+    <button
+      class="nav-toggle"
+      type="button"
+      aria-controls="site-nav"
+      aria-expanded="false"
+      aria-label="メニュー"
+    >
+      Menu
+    </button>
 
-    <nav class="nav">
+    <nav id="site-nav" class="nav">
+      <!-- ←ここを並べ替えれば順番が直る -->
       <a href="#pricing">作業例</a>
       <a href="#works">施工実績</a>
       <a href="#contact">お問い合わせ</a>
