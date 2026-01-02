@@ -273,6 +273,15 @@ img{ max-width:100%; height:auto; display:block; }
 /* WorksとPricingの間隔 */
 #works.section{ padding-bottom: 32px; }
 #pricing.section{ padding-top: 32px; }
+/* Worksだけ広げてるのをやめる */
+.section--full .container.works-container{
+  max-width: var(--w);   /* 1120pxに揃う */
+  width: 100%;
+  margin: 0 auto;
+  padding: 56px 16px;
+}
+#pricing.section{ padding-bottom: 120px; }
+#works.section{ padding-top: 120px; }
 
 /* =========================================================
   Media Card（画像 + テキストのカードを「1本化」）
