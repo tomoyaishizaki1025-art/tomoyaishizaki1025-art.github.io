@@ -87,6 +87,7 @@ img{ max-width:100%; height:auto; display:block; }
   font-weight: 800;
   letter-spacing: .2px;
   color: var(--text);
+  text-decoration:none;
 }
 
 /* Desktop nav */
@@ -202,6 +203,8 @@ img{ max-width:100%; height:auto; display:block; }
   display: grid;
   gap: clamp(16px,3vw,56px);
   align-items: center;
+  position:relative;
+  z-index:1;
 }
 
 @media (max-width:900px){
@@ -211,17 +214,11 @@ img{ max-width:100%; height:auto; display:block; }
 }
 
 @media (min-width:901px){
-  .hero-grid{
-    grid-template-columns: minmax(0,520px) minmax(0,1fr);
-  }
+  .hero-grid{ grid-template-columns: minmax(0,520px) minmax(0,1fr); }
   .hero-text,.hero-media{ justify-self:stretch; }
 }
 
-.hero-text{
-  text-align:left;
-  max-width:80ch;
-}
-
+.hero-text{ text-align:left; max-width:80ch; }
 .hero-media{ margin:0; }
 
 .hero-media img{
@@ -234,35 +231,21 @@ img{ max-width:100%; height:auto; display:block; }
 }
 
 .wiggle{ z-index:0; inset:-25%; opacity: .18; }
-.hero-grid{ position:relative; z-index:1; }
 
 /* =========================================================
-  4) Sections（余白の基本ルール）
+  4) Sections（余白）
+  ★ここだけ触れば「施工実績⇄お問い合わせ」の距離を調整できる
 ========================================================= */
 .section{ padding: 88px 0; }
-
 @media (max-width:600px){
   .section{ padding: 64px 0; }
 }
-
 .section h2{ margin:0 0 18px; }
 
-/* =========================================================
-  セクション間の「個別調整」（ここだけ触ればOK）
-  - 施工実績(#works) ⇔ お問い合わせ(#contact) の距離は
-    #works の padding-bottom を増やすのが最も安全
-========================================================= */
-#pricing.section{
-  padding-top: 88px;
-  padding-bottom: 160px;   /* Contact前の“間” */
-}
+/* セクション間の個別調整 */
+#pricing.section{ padding-top: 88px;  padding-bottom: 160px; }
+#works.section{   padding-top: 160px; padding-bottom: 160px; } /* ←お問い合わせと開けたいならココが効く */
 
-#works.section{
-  padding-top: 160px;      /* Pricing→Works の“間” */
-  padding-bottom: 160px;   /* Works→Contact の“間” ←ここが効く */
-}
-
-/* スマホだけ詰める */
 @media (max-width:600px){
   #pricing.section,
   #works.section{
@@ -271,9 +254,7 @@ img{ max-width:100%; height:auto; display:block; }
   }
 }
 
-/* =========================================================
-  Grid
-========================================================= */
+/* Grid */
 .grid3{
   display:grid;
   grid-template-columns: repeat(3, minmax(0,1fr));
@@ -287,11 +268,9 @@ img{ max-width:100%; height:auto; display:block; }
   .grid3{ grid-template-columns: 1fr; }
 }
 
-/* =========================================================
-  4.1) Works Container（幅を統一）
-========================================================= */
+/* Works Container（幅を統一） */
 .section--full .container.works-container{
-  max-width: var(--w);     /* 1120pxに揃う */
+  max-width: var(--w);
   width: 100%;
   margin: 0 auto;
   padding: 56px 16px;
@@ -309,7 +288,6 @@ img{ max-width:100%; height:auto; display:block; }
   overflow:hidden;
 }
 
-/* 画像 */
 #works .works-container .card > img,
 #pricing .pricing-cases .card > img{
   width:100%;
@@ -320,7 +298,6 @@ img{ max-width:100%; height:auto; display:block; }
   border: 1px solid var(--border);
 }
 
-/* テキスト */
 #works .works-container .card h3,
 #pricing .pricing-cases .card h3{
   margin:0;
@@ -334,8 +311,7 @@ img{ max-width:100%; height:auto; display:block; }
   opacity:.9;
 }
 
-/* Works画像だけ確実に効かせたい場合（任意）
-   HTML側で <img class="work-thumb" ...> のときだけ効く */
+/* Worksだけ確実に効かせたい場合（imgにclass="work-thumb"がある前提） */
 #works img.work-thumb{
   width:100%;
   aspect-ratio: 16 / 9;
@@ -445,9 +421,7 @@ body.debug .works-container{ outline: 4px solid rgba(0,255,0,.9) !important; }
 body.debug .grid3{ outline: 4px dashed rgba(255,120,0,.9) !important; }
 body.debug .card{ outline: 3px solid rgba(120,180,255,.9) !important; }
 
-body.debug .works-container{
-  position: relative;
-}
+body.debug .works-container{ position: relative; }
 body.debug .works-container::after{
   content:"";
   position:absolute;
