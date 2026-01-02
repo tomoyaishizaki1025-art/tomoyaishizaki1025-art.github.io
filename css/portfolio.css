@@ -319,6 +319,13 @@ img{ max-width:100%; height:auto; display:block; }
   border-radius: var(--radius-sm);
   border: 1px solid var(--border);
 }
+/* 最優先でWorks画像だけ確実に効かせる */
+#works img.work-thumb{
+  object-fit: cover;
+  object-position: 50% 35%;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
 
 /* =========================================================
   4.3) Contact
