@@ -134,16 +134,15 @@ img{ max-width:100%; height:auto; display:block; }
   .site-header{ padding: 10px 0; }
   .site-header .container{
     min-height: 56px;
-    padding: 0 16px;
-    gap: 12px;
+    padding: 0 12px;
+    gap: 10px;
   }
   .brand{ font-size: 24px; }
   .nav a{ font-size: 18px; padding: 10px 8px; }
 }
 .header-logo{
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  flex: 1;             /* 左を伸ばして右にMenuを押しやる */
+  min-width: 0;    
 }
 
 .logo-icon{
@@ -165,11 +164,11 @@ img{ max-width:100%; height:auto; display:block; }
   2.1) Mobile Nav Overlay
 ========================================================= */
 @media (max-width:600px){
-  .brand{ font-size: 18px; }
+  .brand{ font-size: 10px; }
   .nav-toggle{ display:inline-flex; align-items:center; gap:6px; }
 
   logo-text{
-    font-size: 1rem;
+    font-size: 0.95rem;
     white-space: nowrap;
   }
 
