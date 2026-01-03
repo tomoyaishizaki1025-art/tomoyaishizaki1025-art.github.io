@@ -130,7 +130,7 @@ img{ max-width:100%; height:auto; display:block; }
 }
 
 /* Tablet */
-@width:1024px){
+@media (max-width:1024px){
   .site-header{ padding: 10px 0; }
   .site-header .container{
     min-height: 56px;
@@ -164,10 +164,9 @@ img{ max-width:100%; height:auto; display:block; }
   2.1) Mobile Nav Overlay
 ========================================================= */
 @media (max-width:600px){
-  .brand{ font-size: 10px; }
   .nav-toggle{ display:inline-flex; align-items:center; gap:6px; }
 
-  logo-text{
+  .logo-text{
     font-size: 0.95rem;
     white-space: nowrap;
   }
