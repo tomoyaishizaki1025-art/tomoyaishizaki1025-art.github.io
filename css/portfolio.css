@@ -490,3 +490,87 @@ body.debug .works-container::after{
   background: rgba(255, 80, 80, .85);
   pointer-events:none;
 }
+/* =========================================================
+  A-2) Services / できること（左：画像 / 右：文字）
+========================================================= */
+.services{
+  /* ヒーローと“同じ世界”に見せる */
+  padding-top: 40px;  /* Hero直後なので少し詰める */
+}
+
+.services-grid{
+  max-width: var(--w);
+  margin: 0 auto;
+  padding: 0 16px;
+
+  display: grid;
+  gap: clamp(16px,3vw,56px);
+  align-items: center;
+}
+
+@media (min-width:901px){
+  .services-grid{
+    grid-template-columns: minmax(0,1fr) minmax(0,520px);
+  }
+  .services-media{ justify-self: stretch; }
+  .services-text{ justify-self: stretch; }
+}
+
+@media (max-width:900px){
+  .services-grid{
+    grid-template-columns: 1fr;
+  }
+  .services-media{ order: 2; }
+  .services-text{ order: 1; }
+}
+
+/* 左の画像（Heroと同じ見た目） */
+.services-media{
+  margin: 0;
+}
+
+.services-media img{
+  width: 100%;
+  max-height: min(56vh,520px);
+  object-fit: contain; /* サイクル画像なので切らずに見せる */
+  border-radius: 16px;
+  box-shadow: 0 14px 32px rgba(15,23,42,.14);
+  border: 1px solid rgba(15,23,42,.08);
+  background: rgba(255,255,255,.55);
+  padding: 18px; /* 透明背景の余白がある画像でも“整う” */
+}
+
+/* 右のテキスト */
+.h2{
+  font-size: clamp(20px,3vw,32px);
+  margin: 0 0 10px;
+  color: #3b5376;
+  font-family: "Kiwi Maru","M PLUS 1p","Noto Sans JP",sans-serif;
+  font-weight: 700;
+  letter-spacing: .02em;
+}
+
+.services-text .lead{
+  margin: 0 0 14px;
+}
+
+.services-list{
+  margin: 0 0 18px;
+  padding: 0;
+  list-style: none;
+
+  display: grid;
+  gap: 10px;
+}
+
+.services-list li{
+  background: rgba(255,255,255,.72);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 12px 14px;
+  box-shadow: 0 10px 18px rgba(15,23,42,.06);
+}
+
+.services-list strong{
+  font-family: "Kiwi Maru","M PLUS 1p","Noto Sans JP",sans-serif;
+}
