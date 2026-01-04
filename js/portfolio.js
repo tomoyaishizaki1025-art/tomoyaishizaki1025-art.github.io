@@ -41,25 +41,35 @@
    *  - “少し手前”で発火させると自然（rootMargin）
    * ======================================================= */
   const revealEls = document.querySelectorAll(sel.revealTargets);
-  if (revealEls.length) {
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (!e.isIntersecting) return;
+if (revealEls.length) {
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+
+        // data-delay があれば読む（なければ0）
+        const delay = Number(e.target.dataset.delay || 0);
+
+        // 二重実行防止
+        if (e.target.dataset.revealed === '1') return;
+        e.target.dataset.revealed = '1';
+
+        setTimeout(() => {
           e.target.classList.add('is-visible');
+        }, delay);
 
-          // 一度出したら監視解除（軽量化）
-          io.unobserve(e.target);
-        });
-      },
-      {
-        threshold: 0.10,
-        rootMargin: '0px 0px -8% 0px', // 少し手前で発火
-      }
-    );
+        io.unobserve(e.target);
+      });
+    },
+    {
+      threshold: 0.10,
+      rootMargin: '0px 0px -8% 0px',
+    }
+  );
 
-    revealEls.forEach((el) => io.observe(el));
-  }
+  revealEls.forEach((el) => io.observe(el));
+}
+
 
   /* =========================================================
    *  D. ヘッダー高さ（アンカー時のズレ対策）
