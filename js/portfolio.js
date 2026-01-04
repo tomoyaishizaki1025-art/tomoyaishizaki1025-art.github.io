@@ -40,35 +40,28 @@
    *  C. スクロールで要素をふわっと表示（IntersectionObserver）
    *  - “少し手前”で発火させると自然（rootMargin）
    * ======================================================= */
-  const revealEls = document.querySelectorAll(sel.revealTargets);
-if (revealEls.length) {
-  const io = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((e) => {
-        if (!e.isIntersecting) return;
+ const io = new IntersectionObserver(
+  (entries, obs) => {
+    entries.forEach((e) => {
+      if (!e.isIntersecting) return;
 
-        // data-delay があれば読む（なければ0）
-        const delay = Number(e.target.dataset.delay || 0);
+      const delay = Number(e.target.dataset.delay || 0);
 
-        // 二重実行防止
-        if (e.target.dataset.revealed === '1') return;
-        e.target.dataset.revealed = '1';
+      if (e.target.dataset.revealed === '1') return;
+      e.target.dataset.revealed = '1';
 
-        setTimeout(() => {
-          e.target.classList.add('is-visible');
-        }, delay);
+      setTimeout(() => {
+        e.target.classList.add('is-visible');
+      }, delay);
 
-        io.unobserve(e.target);
-      });
-    },
-    {
-      threshold: 0.10,
-      rootMargin: '0px 0px -8% 0px',
-    }
-  );
-
-  revealEls.forEach((el) => io.observe(el));
-}
+      obs.unobserve(e.target);
+    });
+  },
+  {
+    threshold: 0.10,
+    rootMargin: '0px 0px -8% 0px',
+  }
+);
 
 
   /* =========================================================
