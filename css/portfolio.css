@@ -392,30 +392,11 @@ body{
 .h1{
   font-size: clamp(24px,4vw,40px);
   margin: .2em 0;
-  color: #8796ab; 
-  color: var(--text);      /* ← 追加 */
-} /* ← 追加 */
-
-.lead{ opacity: .9; }
-.h1{
-  font-size: clamp(24px,4vw,40px);
-  margin: .2em 0;
-  color: var(--text);   /* ← 追加 */
+  color: #3b5376; /* 見出し用 */
 }
-
 .lead{
-  opacity: .9;
   color: var(--muted);
-  color: #98a1b3;  /* ← 追加 */
 }
-.hero-text h1{
-  color: #1F2937;
-}
-
-.hero-text .lead{
-  color: #98a1b3;
-}
-
 /* =========================================================
   6) Buttons
 ========================================================= */
