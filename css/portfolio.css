@@ -59,9 +59,7 @@ img{ max-width:100%; height:auto; display:block; }
   box-shadow: 0 14px 30px rgba(15,23,42,.10);
 }
 
-body{
-  font:16px/1.7 "M PLUS 1p", system-ui, -apple-system, "Noto Sans JP", sans-serif;
-}
+
 /* =========================================================
   2) Header / Nav（sticky）
 ========================================================= */
@@ -401,6 +399,29 @@ body{
 .lead{
   color: var(--muted);
 }
+/* =========================================================
+  Font: Kiwi Maru（見出しだけ）
+========================================================= */
+
+/* 全体は読みやすいM PLUS 1pで統一（bodyは1回だけにする） */
+body{
+  font: 16px/1.7 "M PLUS 1p", system-ui, -apple-system, "Noto Sans JP", sans-serif;
+}
+
+/* ヘッダーのサイト名 */
+.logo-text{
+  font-family: "Kiwi Maru","M PLUS 1p","Noto Sans JP",sans-serif;
+  font-weight: 700;
+  letter-spacing: .02em;
+}
+
+/* ヒーローの見出し（class="h1"に当たる） */
+.hero .h1{
+  font-family: "Kiwi Maru","M PLUS 1p","Noto Sans JP",sans-serif;
+  font-weight: 700;
+  letter-spacing: .02em;
+}
+
 /* =========================================================
   6) Buttons
 ========================================================= */
