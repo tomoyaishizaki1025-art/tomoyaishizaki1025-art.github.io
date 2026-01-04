@@ -575,3 +575,16 @@ body.debug .works-container::after{
 .services-list strong{
   font-family: "Kiwi Maru","M PLUS 1p","Noto Sans JP",sans-serif;
 }
+/* できること：左画像を締める */
+#services .services-media{
+  margin: 0;
+}
+
+#services .services-media img{
+  width: 100%;
+  max-width: 460px;      /* ←効く：大きすぎ防止 */
+  margin: 0 auto;
+  aspect-ratio: 1 / 1;   /* サイクル画像なら相性良い */
+  object-fit: contain;   /* アイコン系は contain が綺麗 */
+  display: block;
+}
