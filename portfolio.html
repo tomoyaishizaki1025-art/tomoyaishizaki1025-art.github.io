@@ -70,14 +70,14 @@
   <div class="container services-grid">
     
     <!-- 左：画像（サイクル型の一枚） -->
-    <figure class="services-media reveal">
+    <figure class="services-media reveal" data-delay="0">
       <img src="images/HeroTop.png"
            alt="修正・更新・保守のサイクル"
            width="1200" height="1200">
     </figure>
 
     <!-- 右：テキスト -->
-    <div class="services-text reveal">
+    <div class="services-text reveal" data-delay="120">
       <h2 class="h2">できること</h2>
       <p class="lead">
         Webサイトの「ちょっと困った」を、まとめて引き受けます。<br>
@@ -99,19 +99,18 @@
 <section id="pricing" class="section section--full">
   <div class="container grid3 pricing-cases">
 
-    <article class="card pricing-card reveal">
+    <article class="card pricing-card reveal"data-delay="0">
       <img src="images/IMG_1100.JPG" alt="カフェのホームページ制作のイメージ">
       <h3>カフェのLP制作</h3>
       <p>小さなお店でも“伝わる導線”で予約・来店につなげるランディングページを制作します。</p>
     </article>
-
-    <article class="card pricing-card reveal">
+    <article class="card pricing-card reveal" data-delay="120">
       <img src="images/IMG_1102.JPG" alt="パーソナルジムのWordPress制作のイメージ">
       <h3>パーソナルジム（WordPress）</h3>
       <p>ブロックエディタで更新しやすい構成に。体験予約やLINE導線なども整えます。</p>
     </article>
 
-    <article class="card pricing-card reveal">
+    <article class="card pricing-card reveal" data-delay="240">
       <img src="images/IMG_1101.JPG" alt="美容室の更新・保守のイメージ">
       <h3>美容室の更新・保守</h3>
       <p>メニュー改定、スタッフ情報、キャンペーン更新など、日々の運用を負担少なく回します。</p>
@@ -124,7 +123,7 @@
 <section id="works" class="section section--full">
   <div class="container grid3 works-container">
 
-    <article class="card reveal work">
+    <article class="card reveal work" data-delay="0">
       <img class="work-thumb" src="images/coming soon.png" alt="Coming soon">
       <div class="work-body">
         <h3>Coming Soon</h3>
@@ -132,7 +131,7 @@
       </div>
     </article>
 
-    <article class="card reveal work">
+    <article class="card reveal work" data-delay="120">
       <img class="work-thumb" src="images/coming soon.png" alt="Coming soon">
       <div class="work-body">
         <h3>Coming Soon</h3>
@@ -140,7 +139,7 @@
       </div>
     </article>
 
-    <article class="card reveal work">
+    <article class="card reveal work" data-delay="240">
       <img class="work-thumb" src="images/coming soon.png" alt="Coming soon">
       <div class="work-body">
         <h3>Coming Soon</h3>
@@ -156,7 +155,7 @@
   <!-- D: Contact -->
   <section id="contact" class="section section--full">
     <div class="container narrow">
-      <form class="form card reveal" onsubmit="alert('送信デモ');return false;">
+      <form class="form card reveal"  data-delay="80"onsubmit="alert('送信デモ');return false;">
         <label>お名前<input required></label>
         <label>メール<input type="email" required></label>
         <label>ご相談<textarea rows="4" required></textarea></label>
