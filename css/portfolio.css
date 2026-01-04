@@ -397,6 +397,16 @@ body{
   margin: .2em 0;
 }
 .lead{ opacity: .9; }
+.h1{
+  font-size: clamp(24px,4vw,40px);
+  margin: .2em 0;
+  color: var(--text);   /* ← 追加 */
+}
+
+.lead{
+  opacity: .9;
+  color: var(--muted);  /* ← 追加 */
+}
 
 /* =========================================================
   6) Buttons
