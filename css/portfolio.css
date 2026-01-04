@@ -156,11 +156,7 @@ img{ max-width:100%; height:auto; display:block; }
   border-radius: 50%;
 }
 
-.logo-text{
-  font-weight: 700;
-  font-size: 2.1rem;
-  color: #3d5469;
-}
+
 .header-logo{
   text-decoration: none;
   color: inherit;
@@ -172,10 +168,7 @@ img{ max-width:100%; height:auto; display:block; }
 @media (max-width:600px){
   .nav-toggle{ display:inline-flex; align-items:center; gap:6px; }
 
-  .logo-text{
-    font-size: 0.95rem;
-    white-space: nowrap;
-  }
+  
 
   .logo-icon{
     width: 28px;
@@ -414,6 +407,14 @@ body{
   font-family: "Kiwi Maru","M PLUS 1p","Noto Sans JP",sans-serif;
   font-weight: 700;
   letter-spacing: .02em;
+  font-size: 2.1rem;
+  color: #3d5469;
+}
+@media (max-width:600px){
+  .logo-text{
+    font-size: 0.95rem;
+    white-space: nowrap;
+  }
 }
 
 /* ヒーローの見出し（class="h1"に当たる） */
