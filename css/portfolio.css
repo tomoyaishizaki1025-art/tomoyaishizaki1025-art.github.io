@@ -92,28 +92,29 @@ img{ max-width:100%; height:auto; display:block; }
 }
 
 .brand{
-  margin-right:auto;
-  font-size: 34px;
-  font-weight: 800;
-  letter-spacing: .2px;
-  color: var(--text);
-  text-decoration:none;
-}
-.brand{
+  margin-right: auto;
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 8px 10px;     /* ←当たり判定 */
+
+  padding: 8px 10px;      /* 当たり判定 */
   border-radius: 14px;
+
+  font-size: 34px;
+  font-weight: 800;
+  letter-spacing: .2px;
+
+  color: var(--text);
   text-decoration: none;
-  color: inherit;
 }
 
+/* フォーカス（キーボード操作対応） */
 .brand:focus-visible{
   outline: 3px solid rgba(147,197,253,.7);
   outline-offset: 3px;
 }
 
+/* ホバー */
 .brand:hover{
   background: rgba(255,255,255,.25);
 }
