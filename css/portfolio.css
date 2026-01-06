@@ -276,8 +276,6 @@ img{ max-width:100%; height:auto; display:block; }
     transform: translateY(0);
   }
 
-  body.nav-open{ overflow: hidden; }
-   /* Close button（モバイル専用） */
   .nav-close{
     position: fixed;
     top: 16px;
@@ -301,6 +299,8 @@ img{ max-width:100%; height:auto; display:block; }
     align-items: center;
     justify-content: center;
   }
+  body.nav-open{ overflow: hidden; }
+   
 }
  
 
