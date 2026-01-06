@@ -254,9 +254,8 @@ img{ max-width:100%; height:auto; display:block; }
     flex-direction: column;
     gap: 10px;
 
-    background: rgba(255,255,255,.96); /* ほぼ不透明 */
-    backdrop-filter: none;             /* 透けが残るなら切る */
-  
+    background:  none;
+    backdrop-filter: none;             
     opacity: 0;
     pointer-events: none;
     transform: translateY(-8px);
