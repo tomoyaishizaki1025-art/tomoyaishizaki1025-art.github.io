@@ -277,8 +277,7 @@ img{ max-width:100%; height:auto; display:block; }
   }
 
   body.nav-open{ overflow: hidden; }
-}
-  /* Close button（モバイル専用） */
+   /* Close button（モバイル専用） */
   .nav-close{
     position: fixed;
     top: 16px;
@@ -302,6 +301,8 @@ img{ max-width:100%; height:auto; display:block; }
     align-items: center;
     justify-content: center;
   }
+}
+ 
 
 /* =========================================================
   3) Hero
