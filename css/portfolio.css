@@ -233,6 +233,9 @@ img{ max-width:100%; height:auto; display:block; }
 /* =========================================================
   2.1) Mobile Nav Overlay
 ========================================================= */
+.nav-close{
+  display: none;
+}
 @media (max-width:600px){
   .nav-toggle{ display:inline-flex; align-items:center; gap:6px; }
 
