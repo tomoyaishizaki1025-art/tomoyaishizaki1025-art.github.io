@@ -255,7 +255,7 @@ img{ max-width:100%; height:auto; display:block; }
     gap: 10px;
 
     background: #fff;
-+   backdrop-filter: none;          
+    backdrop-filter: none;          
     opacity: 0;
     pointer-events: none;
     transform: translateY(-8px);
@@ -288,8 +288,8 @@ img{ max-width:100%; height:auto; display:block; }
     border-radius: 50%;
 
     border: 1px solid rgba(15,23,42,.15);
-    background: rgba(255,255,255,.85);
-    backdrop-filter: blur(8px);
+    background: #fff;
+    backdrop-filter: none;
 
     font-size: 22px;
     font-weight: 700;
