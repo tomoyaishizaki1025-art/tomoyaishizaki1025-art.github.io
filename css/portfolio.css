@@ -558,9 +558,9 @@ body{
     white-space: nowrap;
   }
 }
-{
+
   .nav{ z-index: 10001; } /* headerより上に */
-}
+
 
 /* ヒーローの見出し（class="h1"に当たる） */
 .hero .h1{
@@ -591,7 +591,7 @@ body{
   margin-top: 15px;    /* 下 */
 }
 
-}
+
 .hero-btn{
   display:inline-block;
   padding: 12px 18px;
