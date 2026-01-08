@@ -580,6 +580,10 @@ body{
   background: linear-gradient(90deg,var(--accent),var(--accent2));
   color: #0B1020;
   box-shadow: 0 10px 22px rgba(37,99,235,.12);
+  margin-left: 16px;   /* 右にずらす */
+  margin-top: 12px;    /* 下にずらす */
+}
+
 }
 .hero-btn{
   display:inline-block;
