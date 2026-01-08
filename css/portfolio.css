@@ -344,7 +344,7 @@ img{ max-width:100%; height:auto; display:block; }
 
 @media (max-width:900px){
   .hero-grid{ grid-template-columns: 1fr; }
-  .hero-text{ order:1; text-align:left; max-width:68ch; }
+  .hero-text{ order:1; text-align:left; max-width:100%; }
   .hero-media{ order:2; display:flex; justify-content:center; }
 }
 
