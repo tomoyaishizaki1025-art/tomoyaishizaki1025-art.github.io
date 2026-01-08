@@ -378,17 +378,17 @@ img{ max-width:100%; height:auto; display:block; }
 
 .wiggle{ z-index:0; inset:-25%; opacity:.18; }
 
+/* --- Hero CTA（タブレット最適化） ------------------- */
 @media (min-width:768px) and (max-width:1024px){
-  .btn-primary{
+  .hero .btn-primary{
     padding: 14px 28px;
     font-size: 1rem;
   }
 }
-.btn-primary{
+
+.hero .btn-primary{
   touch-action: manipulation;
 }
-.hero-text{ text-align:left; }
-.btn-primary{ display:inline-block; }
 
 /* =========================================================
   4) Sections（余白）
