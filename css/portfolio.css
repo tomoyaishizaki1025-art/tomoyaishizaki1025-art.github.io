@@ -493,7 +493,7 @@ img{ max-width:100%; height:auto; display:block; }
 }
 
 /* =========================================================
-  4.3) Contact
+  4.3) Contact（整理版）
 ========================================================= */
 .container.narrow{
   max-width: 720px;
@@ -501,44 +501,9 @@ img{ max-width:100%; height:auto; display:block; }
   padding: 0 16px;
 }
 
-#contact .container{ display:block; }
-
+#contact .card{ padding: 22px; }
 .form{ display:grid; gap: 14px; }
 
-.form label{
-  display:grid;
-  gap: 6px;
-  font-weight: 700;
-  color: var(--text);
-}
-
-.form input,
-.form textarea{
-  width: 100%;
-  padding: 12px;
-  border-radius: 10px;
-  border: 1px solid rgba(15,23,42,.14);
-  background: rgba(255,255,255,.92);
-  color: var(--text);
-  font: inherit;
-}
-
-.form .btn{
-  width: fit-content;
-  padding: 10px 16px;
-}
-/* =========================================================
-  Contact (upgrade)
-  - ボタン押しやすい
-  - 2つのボタンを統一
-  - 準備中メッセージを見やすく
-========================================================= */
-
-#contact .card{
-  padding: 22px;
-}
-
-/* タイトル（HTMLに form-title を入れた場合） */
 .form-title{
   margin: 0 0 8px;
   font-size: 22px;
@@ -547,7 +512,6 @@ img{ max-width:100%; height:auto; display:block; }
   font-family: "Kiwi Maru","M PLUS 1p","Noto Sans JP",sans-serif;
 }
 
-/* field構造（HTMLに class="field" を入れた場合） */
 .form .field{
   display: grid;
   gap: 8px;
@@ -559,11 +523,10 @@ img{ max-width:100%; height:auto; display:block; }
   color: rgba(31,41,55,.85);
 }
 
-/* 入力欄：余白、角、影、フォーカス */
 .form input,
 .form textarea{
   width: 100%;
-  padding: 14px 14px;
+  padding: 14px;
   border-radius: 14px;
   border: 1px solid rgba(15,23,42,.14);
   background: rgba(255,255,255,.95);
@@ -581,27 +544,22 @@ img{ max-width:100%; height:auto; display:block; }
   box-shadow: 0 0 0 4px rgba(125,211,252,.35), 0 10px 22px rgba(15,23,42,.10);
 }
 
-/* ボタンエリア */
 .form-actions{
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
   margin-top: 6px;
 }
-
 @media (max-width:600px){
-  .form-actions{
-    grid-template-columns: 1fr;
-  }
+  .form-actions{ grid-template-columns: 1fr; }
 }
 
-/* ボタン共通：大きく、押しやすく */
 .btn.btn--block{
   display: inline-flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  min-height: 52px;            /* ←押しやすさの本命 */
+  min-height: 52px;
   padding: 12px 16px;
   border-radius: 14px;
   font-weight: 800;
@@ -611,7 +569,6 @@ img{ max-width:100%; height:auto; display:block; }
   touch-action: manipulation;
 }
 
-/* primary（送信） */
 .btn--primary{
   border: 1px solid transparent;
   background: linear-gradient(90deg,var(--accent),var(--accent2));
@@ -619,14 +576,12 @@ img{ max-width:100%; height:auto; display:block; }
   box-shadow: 0 12px 24px rgba(37,99,235,.14);
 }
 
-/* ghost（mailto） */
 .btn--ghost{
   border: 1px solid rgba(15,23,42,.14);
   background: rgba(255,255,255,.80);
   color: var(--nav-base);
 }
 
-/* hover */
 @media (hover:hover){
   .btn--primary:hover,
   .btn--ghost:hover{
@@ -635,7 +590,6 @@ img{ max-width:100%; height:auto; display:block; }
   }
 }
 
-/* 準備中メッセージ */
 .form-note{
   margin: 12px 0 0;
   padding: 12px 14px;
@@ -645,12 +599,6 @@ img{ max-width:100%; height:auto; display:block; }
   color: rgba(31,41,55,.80);
   font-size: 14px;
   line-height: 1.75;
-}
-
-/* JSで強調（任意） */
-.form-note.is-strong{
-  border-color: rgba(59,130,246,.35);
-  box-shadow: 0 0 0 4px rgba(125,211,252,.22);
 }
 
 /* =========================================================
