@@ -478,8 +478,6 @@ img{ max-width:100%; height:auto; display:block; }
 }
 /* Pricing note（料金の下の注記） */
 .pricing-note{
-  /* 変な固定表示対策（どこかでfixedが当たってても戻す） */
-  position: static;
   left: auto;
   bottom: auto;
 
