@@ -187,7 +187,6 @@
   <!-- D: Contact -->
 <section id="contact" class="section section--full">
   <div class="container narrow">
-
     <form class="form card reveal" data-delay="80" id="contactForm">
       <h3 class="form-title">お問い合わせ</h3>
 
@@ -207,28 +206,31 @@
       </label>
 
       <div class="form-actions">
-        <button type="submit" class="btn btn--primary btn--block">送信（準備中）</button>
+        <!-- 送信は準備中：押せても送れないので無効化が一番親切 -->
+        <button type="button" class="btn btn--block btn--primary" disabled>
+          送信（準備中）
+        </button>
 
-    
-        <a class="btn btn--ghost btn--block"
-           id="mailtoLink" href="tomoya.ishizaki1025@gmail.com">
+        <!-- mailto は1個だけにする（IDもここだけ） -->
+        <a class="btn btn--block btn--ghost" id="mailtoLink" href="#">
+          メールで相談する
+        </a>
       </div>
 
-      <div class="form-note" id="formNote" aria-live="polite">
-       ※ 現在フォーム送信は準備中です。<br>
-       お手数ですが、上の「メールで相談する」からご連絡ください。
-      </div>
-      <a class="btn btn--ghost btn--block" id="mailtoLink"
-        href="tomoya.ishizaki1025@gmail.com">
-        メールで相談する
-      </a>
+      <p class="form-note" id="formNote" aria-live="polite">
+        ※ 現在フォーム送信は準備中です。<br>
+        お手数ですが、右の「メールで相談する」からご連絡ください。
+      </p>
+    </form>
+  </div>
+</section>
 
 
 
   </div>
 </section>
 
-
+<!-- Footer -->
   <footer class="site-footer"><div class="container">© <span id="y"></span>2026 issi Web creator</div><p>※当サイトの画像はAIによる自動生成によるものです。<br>実在の企業や個人とは関係ありません。</p></footer>
   <script src="./js/portfolio.js"></script>
 </body>
