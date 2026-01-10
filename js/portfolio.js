@@ -218,12 +218,13 @@ console.log("portfolio.js loaded");
   const form = document.getElementById("contactForm");
   if (!form) return;
 
-  const mailtoLink = document.getElementById("mailtoLink");  // お問い合わせ内ボタン
-  const heroConsult = document.getElementById("heroConsult"); // ヒーローの「まずは相談してみる」
-  const note = document.getElementById("formNote");
-  const contactSection = document.getElementById("contact");
+  const heroConsult = document.getElementById("heroConsult");
+  const mailtoLink  = document.getElementById("mailtoLink");
+  const sendDemo    = document.getElementById("sendDemo");
+  const note        = document.getElementById("formNote");
+  const contact     = document.getElementById("contact");
 
-  const TO = "tomoya.ishizaki1025@gmail.com"; 
+  const TO = "tomoya.ishizaki1025@gmail.com";
 
   const getValue = (name) => (form.elements[name]?.value || "").trim();
 
@@ -253,7 +254,7 @@ ${message}
   };
 
   const scrollToContactAndFocus = () => {
-    contactSection?.scrollIntoView({ behavior: "smooth", block: "start" });
+    contact?.scrollIntoView({ behavior: "smooth", block: "start" });
     setTimeout(() => form.elements["name"]?.focus(), 350);
     pulseNote();
   };
@@ -265,23 +266,25 @@ ${message}
     const email = getValue("email");
     const message = getValue("message");
 
-    // 3つとも空なら「入力しに来てね」
+    // 何も入ってなければフォームへ誘導
     if (!name && !email && !message) {
       scrollToContactAndFocus();
       return;
     }
 
-    // 何か入ってるならメール作成画面へ
+    // 入力があればメール作成画面へ
     window.location.href = buildMailtoUrl();
   };
 
-  // ボタン（問い合わせ内 / ヒーロー）に同じ挙動を付与
-  if (mailtoLink) mailtoLink.addEventListener("click", openMailOrGuide);
+  // ヒーロー/お問い合わせの両方を同じ動作に
   if (heroConsult) heroConsult.addEventListener("click", openMailOrGuide);
+  if (mailtoLink)  mailtoLink.addEventListener("click", openMailOrGuide);
 
-  // 送信ボタン（準備中）は submit を止めて案内だけ
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    pulseNote();
-  });
+  // 送信（準備中）は案内だけ出す
+  if (sendDemo) {
+    sendDemo.addEventListener("click", (e) => {
+      e.preventDefault();
+      pulseNote();
+    });
+  }
 })();
