@@ -213,3 +213,35 @@ console.log("portfolio.js loaded");
   onScroll();
   window.addEventListener('scroll', onScroll, { passive: true });
 })();
+// Contact: mailto でメール作成画面を開く
+(() => {
+  const form = document.getElementById("contactForm");
+  const mailtoLink = document.getElementById("mailtoLink");
+  if (!form || !mailtoLink) return;
+
+  const TO = "tomoya.ishizaki1025@gmail.com"; // ← 石﨑さんの商用アドレスに差し替え
+
+  mailtoLink.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    const name = form.elements["name"]?.value?.trim() || "";
+    const email = form.elements["email"]?.value?.trim() || "";
+    const message = form.elements["message"]?.value?.trim() || "";
+
+    const subject = `【Web制作のご相談】${name || "お名前未入力"} 様`;
+    const body =
+`お名前：${name}
+メール：${email}
+
+ご相談内容：
+${message}
+`;
+
+    const url =
+      `mailto:${encodeURIComponent(TO)}` +
+      `?subject=${encodeURIComponent(subject)}` +
+      `&body=${encodeURIComponent(body)}`;
+
+    window.location.href = url;
+  });
+})();
