@@ -570,11 +570,28 @@ img{ max-width:100%; height:auto; display:block; }
 }
 
 .btn--primary{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 52px;
+  padding: 12px 18px;
+  border-radius: 14px;
+
   border: 1px solid transparent;
   background: linear-gradient(90deg,var(--accent),var(--accent2));
   color: #0B1020;
+
+  font-weight: 800;
+  letter-spacing: .02em;
+  text-decoration: none;
+  cursor: pointer;
+  touch-action: manipulation;
+
   box-shadow: 0 12px 24px rgba(37,99,235,.14);
 }
+
+
 
 .btn--ghost{
   border: 1px solid rgba(15,23,42,.14);
