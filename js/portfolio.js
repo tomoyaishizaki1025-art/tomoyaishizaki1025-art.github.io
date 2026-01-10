@@ -213,52 +213,24 @@ console.log("portfolio.js loaded");
   onScroll();
   window.addEventListener('scroll', onScroll, { passive: true });
 })();
-// Contact: mailto でメール作成画面を開く
+// Contact/Hero: mailto でメール作成画面を開く（1本化）
 (() => {
   const form = document.getElementById("contactForm");
-  const mailtoLink = document.getElementById("mailtoLink");
-  if (!form || !mailtoLink) return;
-
-  const TO = "tomoya.ishizaki1025@gmail.com"; // ← 石﨑さんの商用アドレスに差し替え
-
-  mailtoLink.addEventListener("click", (e) => {
-    e.preventDefault();
-
-    const name = form.elements["name"]?.value?.trim() || "";
-    const email = form.elements["email"]?.value?.trim() || "";
-    const message = form.elements["message"]?.value?.trim() || "";
-
-    const subject = `【Web制作のご相談】${name || "お名前未入力"} 様`;
-    const body =
-`お名前：${name}
-メール：${email}
-
-ご相談内容：
-${message}
-`;
-
-    const url =
-      `mailto:${encodeURIComponent(TO)}` +
-      `?subject=${encodeURIComponent(subject)}` +
-      `&body=${encodeURIComponent(body)}`;
-
-    window.location.href = url;
-  });
-})();
-(() => {
-  const form = document.getElementById("contactForm");
-  const mailtoLink = document.getElementById("mailtoLink");
-  const heroConsult = document.getElementById("heroConsult");
-  const note = document.getElementById("formNote");
-
   if (!form) return;
 
-  const TO = "tomoya.ishizaki1025@gmail.com"; // 宛先
+  const mailtoLink = document.getElementById("mailtoLink");  // お問い合わせ内ボタン
+  const heroConsult = document.getElementById("heroConsult"); // ヒーローの「まずは相談してみる」
+  const note = document.getElementById("formNote");
+  const contactSection = document.getElementById("contact");
+
+  const TO = "tomoya.ishizaki1025@gmail.com"; // 宛先（あなたの商用アドレスに置き換え）
+
+  const getValue = (name) => (form.elements[name]?.value || "").trim();
 
   const buildMailtoUrl = () => {
-    const name = (form.elements["name"]?.value || "").trim();
-    const email = (form.elements["email"]?.value || "").trim();
-    const message = (form.elements["message"]?.value || "").trim();
+    const name = getValue("name");
+    const email = getValue("email");
+    const message = getValue("message");
 
     const subject = `【Web制作のご相談】${name || "お名前未入力"} 様`;
     const body =
@@ -274,43 +246,42 @@ ${message}
       + `&body=${encodeURIComponent(body)}`;
   };
 
+  const pulseNote = () => {
+    if (!note) return;
+    note.classList.add("is-strong");
+    setTimeout(() => note.classList.remove("is-strong"), 1400);
+  };
+
+  const scrollToContactAndFocus = () => {
+    contactSection?.scrollIntoView({ behavior: "smooth", block: "start" });
+    setTimeout(() => form.elements["name"]?.focus(), 350);
+    pulseNote();
+  };
+
   const openMailOrGuide = (e) => {
     e.preventDefault();
 
-    const name = (form.elements["name"]?.value || "").trim();
-    const email = (form.elements["email"]?.value || "").trim();
-    const message = (form.elements["message"]?.value || "").trim();
+    const name = getValue("name");
+    const email = getValue("email");
+    const message = getValue("message");
 
-    // 3つとも空なら「入力しに来てね」にする（ヒーローから押した時の自然な動き）
+    // 3つとも空なら「入力しに来てね」
     if (!name && !email && !message) {
-      document.getElementById("contact")?.scrollIntoView({ behavior: "smooth", block: "start" });
-      setTimeout(() => form.elements["name"]?.focus(), 350);
-
-      if (note) note.classList.add("is-strong");
-      setTimeout(() => note?.classList.remove("is-strong"), 1400);
+      scrollToContactAndFocus();
       return;
     }
 
-    // 何か入ってるなら、メール作成画面へ
+    // 何か入ってるならメール作成画面へ
     window.location.href = buildMailtoUrl();
   };
 
-  // Contact側の「メールで相談する」
-  if (mailtoLink) {
-    mailtoLink.addEventListener("click", openMailOrGuide);
-    // href="#" のままでもOKだけど、念のためフォールバックも入れたいなら↓
-    mailtoLink.setAttribute("href", "#");
-  }
+  // ボタン（問い合わせ内 / ヒーロー）に同じ挙動を付与
+  if (mailtoLink) mailtoLink.addEventListener("click", openMailOrGuide);
+  if (heroConsult) heroConsult.addEventListener("click", openMailOrGuide);
 
-  // Hero側「まずは相談してみる」も同じ処理
-  if (heroConsult) {
-    heroConsult.addEventListener("click", openMailOrGuide);
-  }
-
-  // 送信（準備中）は完全に無効化（押されたら案内だけ出す）
+  // 送信ボタン（準備中）は submit を止めて案内だけ
   form.addEventListener("submit", (e) => {
     e.preventDefault();
-    if (note) note.classList.add("is-strong");
-    setTimeout(() => note?.classList.remove("is-strong"), 1400);
+    pulseNote();
   });
 })();
