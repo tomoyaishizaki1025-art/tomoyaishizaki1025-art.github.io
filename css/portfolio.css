@@ -683,6 +683,39 @@ body{
   color: var(--text);
   text-decoration:none;
 }
+/* Primary（HTMLは class="btn btn--primary"） */
+.btn.btn--primary{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 52px;
+  padding: 12px 18px;
+  border-radius: 14px;
+
+  border: 1px solid transparent;
+  background: linear-gradient(90deg,var(--accent),var(--accent2));
+  color: #0B1020;
+
+  font-weight: 800;
+  letter-spacing: .02em;
+  text-decoration: none;
+  cursor: pointer;
+  touch-action: manipulation;
+
+  box-shadow: 0 12px 24px rgba(37,99,235,.14);
+}
+
+@media (hover:hover){
+  .btn.btn--primary{
+    transition: transform .18s ease, box-shadow .18s ease;
+  }
+  .btn.btn--primary:hover,
+  .btn.btn--primary:focus-visible{
+    transform: translateY(-2px);
+    box-shadow: 0 14px 28px rgba(37,99,235,.18);
+  }
+}
 
 .btn-primary{
   border-color: transparent;
@@ -711,47 +744,13 @@ body{
     transition: transform .18s ease, box-shadow .18s ease;
   }
 
+
   .btn-primary:hover,
   .btn-primary:focus{
     transform: translateY(-2px);
     box-shadow: 0 14px 28px rgba(37,99,235,.18);
   }
 }
-/* =========================================================
-  Hero CTA（#heroConsult）を確実に装飾する
-  ※ classズレ対策としてIDで当てる
-========================================================= */
-#heroConsult{
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-
-  padding: 12px 18px;
-  border-radius: 14px;
-
-  border: 1px solid transparent;
-  background: linear-gradient(90deg,var(--accent),var(--accent2));
-  color: #0B1020;
-
-  font-weight: 800;
-  letter-spacing: .02em;
-  text-decoration: none;
-
-  box-shadow: 0 10px 22px rgba(37,99,235,.12);
-}
-
-@media (hover:hover){
-  #heroConsult{
-    transition: transform .18s ease, box-shadow .18s ease;
-  }
-  #heroConsult:hover,
-  #heroConsult:focus-visible{
-    transform: translateY(-2px);
-    box-shadow: 0 14px 28px rgba(37,99,235,.18);
-  }
-}
-
 
 /* =========================================================
   7) Footer
