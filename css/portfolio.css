@@ -268,10 +268,11 @@ img{ max-width:100%; height:auto; display:block; }
     justify-content: center;
   }
 
-  body.nav-open{ overflow: hidden; }
+  
 
   body.nav-open .site-header{
     -webkit-backdrop-filter: none;
+    overflow: hidden;
     backdrop-filter: none;
     background: #fff;
   }
