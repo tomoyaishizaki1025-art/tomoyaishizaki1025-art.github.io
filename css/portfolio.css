@@ -214,15 +214,6 @@ img{ max-width:100%; height:auto; display:block; }
 @media (max-width:600px){
   .nav-toggle{ display:inline-flex; align-items:center; gap:6px; }
 
-
-  
-.hero-lead{
-    text-align: left;     /* 2行目のズレ対策の本命 */
-    max-width: 100%;
-    margin-left: 0;
-    margin-right: 0;
-  }
-
   .nav{
     position: fixed;
     inset: 0;
@@ -234,12 +225,16 @@ img{ max-width:100%; height:auto; display:block; }
     gap: 10px;
 
     background: linear-gradient(180deg, #F7F9FF 0%, #FFFFFF 100%);
-
-    backdrop-filter: none;          
     opacity: 0;
     pointer-events: none;
     transform: translateY(-8px);
     transition: opacity .22s ease, transform .22s ease;
+  }
+
+  .nav.is-open{
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
   }
 
   .nav a{
@@ -251,12 +246,6 @@ img{ max-width:100%; height:auto; display:block; }
     border-radius: 16px;
   }
 
-  .nav.is-open{
-    opacity: 1;
-    pointer-events: auto;
-    transform: translateY(0);
-  }
-
   .nav-close{
     position: absolute;
     top: 16px;
@@ -266,10 +255,8 @@ img{ max-width:100%; height:auto; display:block; }
     width: 40px;
     height: 40px;
     border-radius: 50%;
-
     border: 1px solid rgba(15,23,42,.15);
     background: #fff;
-    backdrop-filter: none;
 
     font-size: 22px;
     font-weight: 700;
@@ -280,16 +267,16 @@ img{ max-width:100%; height:auto; display:block; }
     align-items: center;
     justify-content: center;
   }
+
   body.nav-open{ overflow: hidden; }
 
-}
- @media (max-width:600px){
   body.nav-open .site-header{
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
-    background: #fff; /* ここは完全不透明に */
+    background: #fff;
   }
 }
+
 /* =========================================================
   3) Hero
 ========================================================= */
