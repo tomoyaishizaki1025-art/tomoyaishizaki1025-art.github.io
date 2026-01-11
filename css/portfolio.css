@@ -571,11 +571,6 @@ img{ max-width:100%; height:auto; display:block; }
   Font: Kiwi Maru（見出しだけ）
 ========================================================= */
 
-/* 全体は読みやすいM PLUS 1pで統一（bodyは1回だけにする） */
-body{
-  font: 16px/1.7 "M PLUS 1p", system-ui, -apple-system, "Noto Sans JP", sans-serif;
-}
-
 /* ヘッダーのサイト名 */
 .logo-text{
   font-family: "Kiwi Maru","M PLUS 1p","Noto Sans JP",sans-serif;
