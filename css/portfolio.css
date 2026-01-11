@@ -22,7 +22,7 @@
 
   --debug-line-y: 420px;
 
-  --nav-base: #3d5469;   /* ← ブルーブラック
+  --nav-base: #3d5469;   /* ← ブルーブラック　　*/
   --nav-hover: #3B82F6;  /* ← ホバー時は少しだけ鮮やか */
 }
 
@@ -191,7 +191,6 @@ img{ max-width:100%; height:auto; display:block; }
   display:none;
   border: 1px solid rgba(15,23,42,.14);
   background: rgba(255,255,255,.55);
-  --nav-base: #3d5469; /* ブルーブラック */
   color: var(--nav-base);
   padding: .55rem .85rem;
   border-radius: .75rem;
