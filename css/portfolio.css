@@ -212,25 +212,6 @@ img{ max-width:100%; height:auto; display:block; }
   .brand{ font-size: 24px; }
   .nav a{ font-size: 18px; padding: 10px 8px; }
 }
-.header-logo{
-  flex: 1;
-  min-width: 0;
-  display: flex;          /* 追加 */
-  align-items: center;    /* 追加 */
-  gap: 10px;              /* 追加 */
-}
-
-.logo-icon{
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-}
-
-
-.header-logo{
-  text-decoration: none;
-  color: inherit;
-}
 
 /* =========================================================
   2.1) Mobile Nav Overlay
