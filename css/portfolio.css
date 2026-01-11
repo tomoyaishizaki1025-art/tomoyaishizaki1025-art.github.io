@@ -276,7 +276,7 @@ img{ max-width:100%; height:auto; display:block; }
     background: #fff;
   }
 }
-
+.nav{ z-index: 10001; } /* headerより上に */
 /* =========================================================
   3) Hero
 ========================================================= */
@@ -585,9 +585,6 @@ img{ max-width:100%; height:auto; display:block; }
     white-space: nowrap;
   }
 }
-
-  .nav{ z-index: 10001; } /* headerより上に */
-
 
 /* ヒーローの見出し（class="h1"に当たる） */
 .hero .h1{
