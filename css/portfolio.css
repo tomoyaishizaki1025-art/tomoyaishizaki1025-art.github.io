@@ -114,22 +114,7 @@ img{ max-width:100%; height:auto; display:block; }
   padding: 0 24px;
 }
 
-.brand{
-  margin-right: auto;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
 
-  padding: 8px 10px;      /* 当たり判定 */
-  border-radius: 14px;
-
-  font-size: 34px;
-  font-weight: 800;
-  letter-spacing: .2px;
-
-  color: var(--text);
-  text-decoration: none;
-}
 
 .brand__icon{
   width: 36px;
