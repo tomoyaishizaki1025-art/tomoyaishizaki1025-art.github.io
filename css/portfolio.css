@@ -282,7 +282,6 @@ img{ max-width:100%; height:auto; display:block; }
 ========================================================= */
 .hero{
   position: relative;
-  overflow: hidden;
   min-height: 90vh;
   display: grid;
   place-items: center;
