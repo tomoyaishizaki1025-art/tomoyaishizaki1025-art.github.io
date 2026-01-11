@@ -269,14 +269,17 @@ img{ max-width:100%; height:auto; display:block; }
   }
 
   
-
-  body.nav-open .site-header{
-    -webkit-backdrop-filter: none;
-    overflow: hidden;
-    backdrop-filter: none;
-    background: #fff;
-  }
+html.nav-open{
+  overflow: hidden;
 }
+
+html.nav-open .site-header{
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  background: #fff;
+}
+}
+ 
 .nav{ z-index: 10001; } /* headerより上に */
 /* =========================================================
   3) Hero
