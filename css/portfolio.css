@@ -434,21 +434,6 @@ img{ max-width:100%; height:auto; display:block; }
   object-fit: cover;
   object-position: 50% 35%;
 }
-/* Pricing note（料金の下の注記） */
-.pricing-note{
-  left: auto;
-  bottom: auto;
-
-  max-width: var(--w);      /* 1120px を変数で使ってる前提 */
-  margin: 14px auto 0;
-  padding: 0 16px;
-
-  font-size: 14px;
-  line-height: 1.7;
-  color: var(--muted);
-
-  text-align: left;
-}
 
 /* =========================================================
   4.3) Contact（整理版）
