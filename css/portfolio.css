@@ -594,8 +594,7 @@ img{ max-width:100%; height:auto; display:block; }
 }
 
 /* =========================================================
-  6) Buttons（統合版：これ1セットだけ残す）
-  使う想定：class="btn", "btn btn--primary", "btn btn--ghost", "btn btn--block"
+  6) Buttons
 ========================================================= */
 
 /* base */
