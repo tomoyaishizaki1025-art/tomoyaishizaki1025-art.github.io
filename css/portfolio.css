@@ -33,6 +33,15 @@
 html, body{
   overflow-x: hidden;
 }
+html, body{
+  overflow-x: visible;
+}
+
+
+body{
+  overflow-x: hidden;
+}
+
 
 body{
   font: 16px/1.7 "M PLUS 1p", system-ui, -apple-system, "Noto Sans JP", sans-serif;
