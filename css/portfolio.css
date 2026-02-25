@@ -598,7 +598,18 @@ html.nav-open .site-header{
   font-weight: 700;
   letter-spacing: .02em;
 }
+.gform-wrap{
+  overflow: hidden;
+  border-radius: 14px;
+  border: 1px solid rgba(15,23,42,.10);
+  background: rgba(255,255,255,.75);
+}
 
+.gform-wrap iframe{
+  display:block;
+  width:100%;
+  border:0;
+}
 /* =========================================================
   6) Buttons
 ========================================================= */
