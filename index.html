@@ -191,42 +191,29 @@
 <section id="contact" class="section section--full">
   <div class="container narrow">
 
-    <form class="form card reveal" data-delay="80" id="contactForm">
+    <div class="card reveal" data-delay="80">
       <h3 class="form-title">お問い合わせ</h3>
 
-      <label class="field">
-        <span>お名前</span>
-        <input name="name" autocomplete="name" required>
-      </label>
+      <!-- Googleフォーム埋め込み（URLは置き換え） -->
+      <div class="gform-wrap">
+        <iframe
+          src="https://docs.google.com/forms/d/e/【ここにID】/viewform?embedded=true"
+          width="100%" height="780" frameborder="0" marginheight="0" marginwidth="0"
+          title="お問い合わせフォーム"
+        >読み込んでいます…</iframe>
+      </div>
 
-      <label class="field">
-        <span>メール</span>
-        <input type="email" name="email" autocomplete="email" required>
-      </label>
-
-      <label class="field">
-        <span>ご相談</span>
-        <textarea name="message" rows="6" required></textarea>
-      </label>
-
-      <div class="form-actions">
-        <!-- 送信は準備中：押しても送れない -->
-        <button type="button" class="btn btn--block btn--primary" id="sendDemo">
-          送信（準備中）
-        </button>
-
-        <!-- mailto は1個だけ（IDもここだけ） -->
-        <a class="btn btn--block btn--ghost" id="mailtoLink"
+      <div class="form-actions" style="margin-top:12px;">
+        <a class="btn btn--block btn--ghost"
            href="mailto:tomoya.ishizaki1025@gmail.com">
           メールで相談する
         </a>
       </div>
 
-      <p class="form-note" id="formNote" aria-live="polite">
-        ※ 現在フォーム送信は準備中です。<br>
-        お手数ですが、右の「メールで相談する」からご連絡ください。
+      <p class="form-note" aria-live="polite">
+        ※フォーム送信後、控えメールが届かない場合は「メールで相談する」からご連絡ください。
       </p>
-    </form>
+    </div>
 
   </div>
 </section>
