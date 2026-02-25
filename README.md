@@ -1,4 +1,4 @@
-# イッシーポートフォリオ
+# いっしWeb制作ポートフォリオ
 
 個人事業主・小規模事業者向けの  
 Web制作・WordPress保守サービスのポートフォリオサイトです。
@@ -8,7 +8,6 @@ Web制作・WordPress保守サービスのポートフォリオサイトです�
 ---
 
 ## 🌐 公開URL
-（GitHub Pages 反映後にここにURLを入れます）
 
 https://tomoyaishizaki1025-art.github.io
 
@@ -36,7 +35,7 @@ https://tomoyaishizaki1025-art.github.io
 
 ## 📁 フォルダ構成
 
-# イッシーポートフォリオ
+# いっしWeb制作ポートフォリオ
 
 個人事業主・小規模事業者向けの  
 Web制作・WordPress保守サービスのポートフォリオサイトです。
@@ -46,7 +45,6 @@ Web制作・WordPress保守サービスのポートフォリオサイトです�
 ---
 
 ## 🌐 公開URL
-（GitHub Pages 反映後にここにURLを入れます）
 
 https://tomoyaishizaki1025-art.github.io
 
