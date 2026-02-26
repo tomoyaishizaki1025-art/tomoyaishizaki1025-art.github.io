@@ -582,7 +582,9 @@ html.nav-open .site-header{
   font-size: 14px;
   line-height: 1.75;
 }
-
+@media (min-width:901px){
+  .about-grid{ grid-template-columns: 1fr 420px; }
+}
 /* =========================================================
   5) Typography
 ========================================================= */
