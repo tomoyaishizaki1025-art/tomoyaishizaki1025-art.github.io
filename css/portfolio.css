@@ -479,7 +479,17 @@ html.nav-open .site-header{
   color: var(--muted);
   text-align: left;
 }
+/* Worksが1枚しか無い時だけ中央に */
+#works .works-container:not(:has(.work:nth-child(2))){
+  grid-template-columns: 1fr;
+  justify-items: center;
+}
 
+/* カードが横に伸びすぎないように */
+#works .works-container:not(:has(.work:nth-child(2))) .work{
+  width: 100%;
+  max-width: 520px;
+}
 /* =========================================================
   4.3) Contact（整理版）
 ========================================================= */
