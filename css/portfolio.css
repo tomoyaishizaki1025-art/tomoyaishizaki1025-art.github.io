@@ -319,7 +319,85 @@ html.nav-open .site-header{
   box-shadow: 0 14px 32px rgba(15,23,42,.14);
   border: 1px solid rgba(15,23,42,.08);
 }
+/* =========================================================
+  Hero image swap（2枚切替：説明 ↔ 喜び）
+  既存の .hero-media img を崩さないため hero-swap の時だけ上書き
+========================================================= */
+.hero-media.hero-swap{
+  position: relative;
+  overflow: hidden;
 
+  /* 既存の img の max-height(min(56vh,520px)) を親側へ移す */
+  max-height: min(56vh, 520px);
+
+  /* 既存と合わせる */
+  border-radius: 16px;
+  box-shadow: 0 14px 32px rgba(15,23,42,.14);
+  border: 1px solid rgba(15,23,42,.08);
+}
+
+/* 2枚を重ねる */
+.hero-media.hero-swap .hero-swap__img{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  /* 既存 img のスタイルを引き継ぎつつ二重掛けを防ぐ */
+  max-height: none;
+  border-radius: inherit;
+  box-shadow: none;
+  border: none;
+}
+
+/* 高さが0にならないように比率を固定（1500x900 = 5/3） */
+.hero-media.hero-swap{
+  aspect-ratio: 5 / 3;
+}
+
+/* 表示：A 2.5秒 → 切替0.3秒 → B 2.5秒 → 切替0.3秒 */
+.hero-media.hero-swap .hero-swap__img--a{
+  animation: heroSwapA 5.6s infinite;
+}
+.hero-media.hero-swap .hero-swap__img--b{
+  animation: heroSwapB 5.6s infinite;
+}
+
+@keyframes heroSwapA{
+  0%   { opacity: 1; }
+  44%  { opacity: 1; }  /* A表示 */
+  49%  { opacity: 0; }  /* 0.3秒くらいで切替 */
+  94%  { opacity: 0; }  /* B表示中は隠す */
+  100% { opacity: 1; }
+}
+
+@keyframes heroSwapB{
+  0%   { opacity: 0; }
+  44%  { opacity: 0; }
+  49%  { opacity: 1; }
+  94%  { opacity: 1; }  /* B表示 */
+  100% { opacity: 0; }
+}
+
+/* モバイル時：あなたの既存 order/center と相性OK */
+@media (max-width:900px){
+  .hero-media.hero-swap{
+    width: 100%;
+    max-width: 520px; /* 好みで 480px などに調整OK */
+  }
+}
+
+/* 動きが苦手な人向け */
+@media (prefers-reduced-motion: reduce){
+  .hero-media.hero-swap .hero-swap__img--a,
+  .hero-media.hero-swap .hero-swap__img--b{
+    animation: none;
+  }
+  .hero-media.hero-swap .hero-swap__img--b{
+    display: none;
+  }
+}
 /* 900px以下（ここ1回にまとめる） */
 @media (max-width:900px){
   .hero-grid{ grid-template-columns: 1fr; }
