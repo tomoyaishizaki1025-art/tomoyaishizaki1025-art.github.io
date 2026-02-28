@@ -462,6 +462,13 @@ html.nav-open .site-header{
   padding: 12px 14px;
   box-shadow: 0 10px 18px rgba(15,23,42,.06);
 }
+/* PCでは br を消して2行に寄せる */
+.br-sp { display: none; }
+
+/* スマホだけ改行を有効化 */
+@media (max-width: 600px){
+  .br-sp { display: inline; }
+}
 /* =========================================================
   4) Sections（余白）
   ★ここだけ触れば「施工実績⇄お問い合わせ」の距離を調整できる
