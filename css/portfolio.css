@@ -106,8 +106,8 @@ img{ max-width:100%; height:auto; display:block; }
 /* スクロールしたら付けるクラス */
 .site-header.is-stuck{
   box-shadow: 0 12px 30px rgba(15,23,42,.10);
-  background: linear-gradient(90deg, rgba(220,235,255,.92), rgba(233,216,255,.92));
-  padding: 8px 0; /* 例：少しだけ薄く */
+  background: linear-gradient(90deg, rgba(243,231,214,.92), rgba(234,215,195,.92));
+  padding: 8px 0;
 }
 
 .site-header .container{
