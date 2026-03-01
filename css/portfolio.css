@@ -47,9 +47,9 @@ body{
 body{
   font: 16px/1.7 "M PLUS 1p", system-ui, -apple-system, "Noto Sans JP", sans-serif;
   background:
-    radial-gradient(900px 520px at 18% 12%, rgba(125,211,252,.35), transparent 55%),
-    radial-gradient(820px 520px at 88% 18%, rgba(196,181,253,.30), transparent 55%),
-    linear-gradient(#F6F8FF, #EEF2FF);
+    radial-gradient(900px 520px at 18% 12%, rgba(230,201,168,.45), transparent 55%),
+    radial-gradient(820px 520px at 88% 18%, rgba(199,161,122,.32), transparent 55%),
+    linear-gradient(#FBF6EE, #F3E7D6);
   color:var(--text);
 }
 
