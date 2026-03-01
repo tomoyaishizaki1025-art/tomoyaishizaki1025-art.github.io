@@ -715,7 +715,7 @@ html.nav-open .site-header{
   letter-spacing: .02em;
   font-size: clamp(24px,4vw,40px);
   margin: .2em 0;
-  color: #3b5376;
+  color: var(--choco);
 }
 
 /* =========================================================
@@ -1007,7 +1007,7 @@ body.debug .works-container::after{
 #services .h2{
   font-size: clamp(22px, 3vw, 34px);
   margin: 0 0 10px;
-  color: #3b5376;
+  color: var(--choco);
   font-family: "Kiwi Maru","M PLUS 1p","Noto Sans JP",sans-serif;
   font-weight: 700;
   letter-spacing: .02em;
