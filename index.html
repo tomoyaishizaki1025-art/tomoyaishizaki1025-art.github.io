@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -17,8 +18,8 @@
   <div class="container">
 <!-- header内 -->
 <a class="brand" href="#hero" aria-label="ヒーローセクションへ戻る">
-  <img class="brand__icon" src="images/dogicon2.png" alt="犬のアイコン" />
-  <span class="brand__text">いっしWeb制作</span>
+  <img class="brand__icon" src="images/icondog.png" alt="犬のアイコン" />
+  <span class="brand__text">ゐっしWeb制作</span>
 </a>      
 
     <button
@@ -37,7 +38,6 @@
       <!-- ←ここを並べ替えれば順番が直る -->
      <a href="#services">できること</a>
      <a href="#pricing">作業例</a>
-     <a href="#about">自己紹介</a>
      <a href="#works">制作実績</a>
     <a href="#contact">お問い合わせ</a>
   
@@ -49,12 +49,12 @@
 <section class="hero" id="hero">
   <div class="container hero-grid">
     <div class="hero-text">
- <h1 class="hero-title reveal hero-title-pop" data-delay="0">
-  <span class="hero-line">「更新できない」をなくす。</span>
-  <span class="hero-line">自分で直せるホームページへ</span>
+  <h1 class="hero-title reveal hero-title-pop" data-delay="0">「ちょっと聞いてみたい」
+  <br>から始めるWeb制作。
 </h1>
+
 <p class="hero-lead lead reveal" data-delay="150">
-文章の修正やお知らせ追加が、ご自身でできる仕組みをつくります。
+難しい言葉は使いません。まずは話を聞かせてください。
 </p>
 
 <a class="btn btn--primary reveal" href="#contact" id="heroConsult">まずは相談してみる</a>
@@ -64,25 +64,12 @@
 
 
     </div>
-    <figure class="hero-media hero-swap" aria-label="画像が切り替わります">
-  <img
-    class="hero-swap__img hero-swap__img--a"
-    src="images/hero3.png"
-    alt="説明している様子"
-    width="1500" height="900"
-    loading="eager"
-    decoding="async"
-  />
-  <img
-    class="hero-swap__img hero-swap__img--b"
-    src="images/hero4.png"
-    alt="自分で更新できて嬉しそうな様子"
-    width="1500" height="900"
-    loading="lazy"
-    decoding="async"
-  />
-</figure>
     
+    <figure class="hero-media">
+      <img src="images/Hero1.png"  
+        alt="ノートPCで作業する様子"
+        width="1500" height="900"  />        
+    </figure>
   </div>
 
   <div class="wiggle" aria-hidden="true"></div>
@@ -113,30 +100,6 @@
       </ul>
 
     </div>
-
-  </div>
-</section>
-
-<section id="about" class="section about">
-  <div class="container about-grid">
-
-    <div class="about-text reveal" data-delay="120">
-      <h2 class="h2">自己紹介</h2>
-      <p class="lead">
-        石崎（いっし）です。Web制作（HTML/CSS/WordPress）を中心に、
-        「更新しやすいサイト」「伝わる導線」を意識して制作します。
-      </p>
-
-      <ul class="about-list">
-        <li><strong>現役 登録販売者</strong>：説明・信頼対応に慣れています</li>
-        <li><strong>接客経験</strong>：ヒアリング→要点整理が得意です</li>
-        <li><strong>安全運用</strong>：バックアップ＋差分管理（Git）で進行します</li>
-      </ul>
-    </div>
-
-    <figure class="about-media reveal" data-delay="0">
-      <img src="images/icon face.png" alt="制作者のイメージ" width="900" height="900">
-    </figure>
 
   </div>
 </section>
@@ -198,15 +161,12 @@
       <img class="work-thumb" src="images/zisseki.png" alt="Coming soon">
       <div class="work-body">
         <h3>いっしWeb制作</h3>
-        <p>
-          このサイトは自作ポートフォリオです。<br>
-          使用技術：HTML / CSS / JavaScript（GitHub Pages）<br>
-          意識した点：スマホ導線・読みやすさ・問い合わせの分かりやすさ
-        </p>
+        <p>企画・デザイン・コーディング・公開までを一人で制作<br>
+           レスポンシブ対応 / UI設計 / Git管理</p>
       </div>
     </article>
 
-   <!--- <article class="card reveal work" data-delay="120" hidden>
+    <article class="card reveal work" data-delay="120">
       <img class="work-thumb" src="images/coming soon.png" alt="Coming soon">
       <div class="work-body">
         <h3>Coming Soon</h3>
@@ -215,14 +175,14 @@
       </div>
     </article>
 
-    <article class="card reveal work" data-delay="240" hidden>
+    <article class="card reveal work" data-delay="240">
       <img class="work-thumb" src="images/coming soon.png" alt="Coming soon">
       <div class="work-body">
         <h3>Coming Soon</h3>
         <p>制作実績は準備中です。<br>
            ご相談・ご依頼は受け付けております。</p>
       </div>
-    </article>--->
+    </article>
 
   </div>
 </section>
@@ -232,29 +192,42 @@
 <section id="contact" class="section section--full">
   <div class="container narrow">
 
-    <div class="card reveal" data-delay="80">
+    <form class="form card reveal" data-delay="80" id="contactForm">
       <h3 class="form-title">お問い合わせ</h3>
 
-      <!-- Googleフォーム埋め込み（URLは置き換え） -->
-      <div class="gform-wrap">
-        <iframe
-          src="https://docs.google.com/forms/d/e/【ここにID】/viewform?embedded=true"
-          width="100%" height="780" frameborder="0" marginheight="0" marginwidth="0"
-          title="お問い合わせフォーム"
-        >読み込んでいます…</iframe>
-      </div>
+      <label class="field">
+        <span>お名前</span>
+        <input name="name" autocomplete="name" required>
+      </label>
 
-      <div class="form-actions" style="margin-top:12px;">
-        <a class="btn btn--block btn--ghost"
+      <label class="field">
+        <span>メール</span>
+        <input type="email" name="email" autocomplete="email" required>
+      </label>
+
+      <label class="field">
+        <span>ご相談</span>
+        <textarea name="message" rows="6" required></textarea>
+      </label>
+
+      <div class="form-actions">
+        <!-- 送信は準備中：押しても送れない -->
+        <button type="button" class="btn btn--block btn--primary" id="sendDemo">
+          送信（準備中）
+        </button>
+
+        <!-- mailto は1個だけ（IDもここだけ） -->
+        <a class="btn btn--block btn--ghost" id="mailtoLink"
            href="mailto:tomoya.ishizaki1025@gmail.com">
           メールで相談する
         </a>
       </div>
 
-      <p class="form-note" aria-live="polite">
-        ※フォーム送信後、控えメールが届かない場合は「メールで相談する」からご連絡ください。
+      <p class="form-note" id="formNote" aria-live="polite">
+        ※ 現在フォーム送信は準備中です。<br>
+        お手数ですが、右の「メールで相談する」からご連絡ください。
       </p>
-    </div>
+    </form>
 
   </div>
 </section>
@@ -266,7 +239,7 @@
   <footer class="site-footer">
   <div class="container footer-inner">
     <div class="footer-left">
-      © <span id="y"></span>  いっし Web制作
+      © <span id="y"></span>  Issi Web制作
     </div>
 
     <div class="footer-right" aria-label="SNSリンク">
@@ -294,7 +267,8 @@
   </div>
 
   <p class="footer-note">
-  ※一部のイメージ画像は生成AIを用いて作成しています。
+    ※当サイトの画像はAIによる自動生成によるものです。<br>
+    実在の企業や個人とは関係ありません。
   </p>
 </footer>
 
