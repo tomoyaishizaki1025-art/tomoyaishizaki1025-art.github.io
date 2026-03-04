@@ -4,40 +4,28 @@
   0) Variables（ここ1箇所だけ）
 ========================================================= */
 :root{
-  /* --- base --- */
-  --bg:#FBF6EE;                 /* 全体の薄いベージュ */
+  --bg:#F6F8FF;
   --surface:#FFFFFF;
-  --text:#2B2118;               /* ブラウン寄りの濃い文字 */
-  --muted:#6F6258;              /* 説明文用ブラウン */
+  --text:#1F2937;   /* 濃グレー */
+  --muted:#6B7280;  /* やや薄め */
 
-  /* --- accent --- */
-  --accent:#E6C9A8;             /* クリーム系 */
-  --accent2:#C7A17A;            /* カフェブラウン */
+  --accent:#7DD3FC;
+  --accent2:#C4B5FD;
 
   --w:1120px;
 
   --radius:22px;
   --radius-sm:16px;
 
-  --border: rgba(43,33,24,.10);
-  --border-strong: rgba(43,33,24,.16);
+  --border: rgba(15,23,42,.10);
+  --border-strong: rgba(15,23,42,.16);
 
   --debug-line-y: 420px;
 
-  /* --- nav text --- */
-  --nav-base:#3A2A1D;           /* ブルーブラック→ブラウンブラック */
-  --nav-hover:#A06A3A;          /* ホバーはカフェっぽいブラウン */
+  --nav-base: #3d5469;   /* ← ブルーブラック　　*/
+  --nav-hover: #3B82F6;  /* ← ホバー時は少しだけ鮮やか */
 }
-:root{
-  /* 追加：ブラウン系 */
-  --choco:#5B3A29;     /* 濃いチョコ（タイトル/ロゴ向け） */
-  --choco-2:#7A4B34;   /* 少し薄い（リンク/見出し向け） */
-  --choco-3:#A06A4A;   /* さらに薄い（hoverや補助） */
 
-  /* 置き換え推奨：ナビの基準色をチョコへ */
-  --nav-base: var(--choco);
-  --nav-hover: var(--choco-2);
-}
 /* =========================================================
   1) Reset / Base
 ========================================================= */
@@ -45,8 +33,10 @@
 html, body{
   overflow-x: hidden;
 }
+html, body{
+  overflow-x: visible;
+}
 
-html, body{ overflow-x: hidden; }
 
 body{
   overflow-x: hidden;
@@ -56,9 +46,9 @@ body{
 body{
   font: 16px/1.7 "M PLUS 1p", system-ui, -apple-system, "Noto Sans JP", sans-serif;
   background:
-    radial-gradient(900px 520px at 18% 12%, rgba(230,201,168,.45), transparent 55%),
-    radial-gradient(820px 520px at 88% 18%, rgba(199,161,122,.32), transparent 55%),
-    linear-gradient(#FBF6EE, #F3E7D6);
+    radial-gradient(900px 520px at 18% 12%, rgba(125,211,252,.35), transparent 55%),
+    radial-gradient(820px 520px at 88% 18%, rgba(196,181,253,.30), transparent 55%),
+    linear-gradient(#F6F8FF, #EEF2FF);
   color:var(--text);
 }
 
@@ -93,17 +83,17 @@ img{ max-width:100%; height:auto; display:block; }
   2) Header / Nav（sticky）
 ========================================================= */
 .site-header{
-  position: -webkit-sticky;
+  position: -webkit-sticky; /* Safari保険 */
   position: sticky;
   top: 0;
   z-index: 10000;
   width: 100%;
   padding: 14px 0;
 
-  background: linear-gradient(90deg,#F3E7D6 0%, #EAD7C3 100%);
-  border-bottom: 1px solid rgba(43,33,24,.06);
+  background: linear-gradient(90deg,#DCEBFF 0%, #E9D8FF 100%);
+  border-bottom: 1px solid rgba(15,23,42,.06);
 
-  -webkit-backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px); /* Safari必須級 */
   backdrop-filter: blur(12px);
 
   transition: box-shadow .2s ease, background .2s ease;
@@ -115,8 +105,8 @@ img{ max-width:100%; height:auto; display:block; }
 /* スクロールしたら付けるクラス */
 .site-header.is-stuck{
   box-shadow: 0 12px 30px rgba(15,23,42,.10);
-  background: linear-gradient(90deg, rgba(243,231,214,.92), rgba(234,215,195,.92));
-  padding: 8px 0;
+  background: linear-gradient(90deg, rgba(220,235,255,.92), rgba(233,216,255,.92));
+  padding: 8px 0; /* 例：少しだけ薄く */
 }
 
 .site-header .container{
@@ -151,7 +141,7 @@ img{ max-width:100%; height:auto; display:block; }
   font-weight: 700;
   letter-spacing: .02em;
   font-size: 34px;
-  color: var(--choco);
+  color: #3b5376;
 }
 @media (max-width:1024px){
   .brand__text{ font-size: 24px; }
@@ -331,85 +321,7 @@ html.nav-open .site-header{
   box-shadow: 0 14px 32px rgba(15,23,42,.14);
   border: 1px solid rgba(15,23,42,.08);
 }
-/* =========================================================
-  Hero image swap（2枚切替：説明 ↔ 喜び）
-  既存の .hero-media img を崩さないため hero-swap の時だけ上書き
-========================================================= */
-.hero-media.hero-swap{
-  position: relative;
-  overflow: hidden;
 
-  /* 既存の img の max-height(min(56vh,520px)) を親側へ移す */
-  max-height: min(56vh, 520px);
-
-  /* 既存と合わせる */
-  border-radius: 16px;
-  box-shadow: 0 14px 32px rgba(15,23,42,.14);
-  border: 1px solid rgba(15,23,42,.08);
-}
-
-/* 2枚を重ねる */
-.hero-media.hero-swap .hero-swap__img{
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-
-  /* 既存 img のスタイルを引き継ぎつつ二重掛けを防ぐ */
-  max-height: none;
-  border-radius: inherit;
-  box-shadow: none;
-  border: none;
-}
-
-/* 高さが0にならないように比率を固定（1500x900 = 5/3） */
-.hero-media.hero-swap{
-  aspect-ratio: 5 / 3;
-}
-
-/* 表示：A 2.5秒 → 切替0.3秒 → B 2.5秒 → 切替0.3秒 */
-.hero-media.hero-swap .hero-swap__img--a{
-  animation: heroSwapA 5.6s infinite;
-}
-.hero-media.hero-swap .hero-swap__img--b{
-  animation: heroSwapB 5.6s infinite;
-}
-
-@keyframes heroSwapA{
-  0%   { opacity: 1; }
-  44%  { opacity: 1; }  /* A表示 */
-  49%  { opacity: 0; }  /* 0.3秒くらいで切替 */
-  94%  { opacity: 0; }  /* B表示中は隠す */
-  100% { opacity: 1; }
-}
-
-@keyframes heroSwapB{
-  0%   { opacity: 0; }
-  44%  { opacity: 0; }
-  49%  { opacity: 1; }
-  94%  { opacity: 1; }  /* B表示 */
-  100% { opacity: 0; }
-}
-
-/* モバイル時：あなたの既存 order/center と相性OK */
-@media (max-width:900px){
-  .hero-media.hero-swap{
-    width: 100%;
-    max-width: 520px; /* 好みで 480px などに調整OK */
-  }
-}
-
-/* 動きが苦手な人向け */
-@media (prefers-reduced-motion: reduce){
-  .hero-media.hero-swap .hero-swap__img--a,
-  .hero-media.hero-swap .hero-swap__img--b{
-    animation: none;
-  }
-  .hero-media.hero-swap .hero-swap__img--b{
-    display: none;
-  }
-}
 /* 900px以下（ここ1回にまとめる） */
 @media (max-width:900px){
   .hero-grid{ grid-template-columns: 1fr; }
@@ -441,52 +353,7 @@ html.nav-open .site-header{
 .hero .btn-primary{
   touch-action: manipulation;
 }
-/*. aboutoセクション*/
-.about-grid{
-  display:grid;
-  gap: clamp(16px,3vw,56px);
-  align-items:center;
-}
-@media (min-width:901px){
-  .about-grid{ grid-template-columns: 420px 1fr; }
-}
-.about-media img{
-  width:100%;
-  max-width:360px;
-  margin:0 auto;
-  border-radius: 16px;
-  border:1px solid rgba(15,23,42,.08);
-  box-shadow: 0 14px 32px rgba(15,23,42,.14);
-  background: rgba(255,255,255,.55);
-  padding: 14px;
-}
-.about-list{
-  list-style:none;
-  padding:0;
-  margin: 12px 0 0;
-  display:grid;
-  gap:10px;
-}
-.about-list li{
-  background: rgba(255,255,255,.72);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 12px 14px;
-  box-shadow: 0 10px 18px rgba(15,23,42,.06);
-}
-.hero-line{ display:block; }
 
-@media (min-width: 901px){
-  .hero-line{ white-space: nowrap; } /* PCで2行を固定 */
-}
-
-/* PCでは br を消して2行に寄せる */
-.br-sp { display: none; }
-
-/* スマホだけ改行を有効化 */
-@media (max-width: 600px){
-  .br-sp { display: inline; }
-}
 /* =========================================================
   4) Sections（余白）
   ★ここだけ触れば「施工実績⇄お問い合わせ」の距離を調整できる
@@ -582,17 +449,7 @@ html.nav-open .site-header{
   color: var(--muted);
   text-align: left;
 }
-/* Worksが1枚しか無い時だけ中央に */
-#works .works-container:not(:has(.work:nth-child(2))){
-  grid-template-columns: 1fr;
-  justify-items: center;
-}
 
-/* カードが横に伸びすぎないように */
-#works .works-container:not(:has(.work:nth-child(2))) .work{
-  width: 100%;
-  max-width: 520px;
-}
 /* =========================================================
   4.3) Contact（整理版）
 ========================================================= */
@@ -695,9 +552,7 @@ html.nav-open .site-header{
   font-size: 14px;
   line-height: 1.75;
 }
-@media (min-width:901px){
-  .about-grid{ grid-template-columns: 1fr 420px; }
-}
+
 /* =========================================================
   5) Typography
 ========================================================= */
@@ -715,7 +570,7 @@ html.nav-open .site-header{
   letter-spacing: .02em;
   font-size: clamp(24px,4vw,40px);
   margin: .2em 0;
-  color: var(--choco);
+  color: #3b5376;
 }
 
 /* =========================================================
@@ -743,18 +598,7 @@ html.nav-open .site-header{
   font-weight: 700;
   letter-spacing: .02em;
 }
-.gform-wrap{
-  overflow: hidden;
-  border-radius: 14px;
-  border: 1px solid rgba(15,23,42,.10);
-  background: rgba(255,255,255,.75);
-}
 
-.gform-wrap iframe{
-  display:block;
-  width:100%;
-  border:0;
-}
 /* =========================================================
   6) Buttons
 ========================================================= */
@@ -792,7 +636,8 @@ html.nav-open .site-header{
   border: 1px solid transparent;
   background: linear-gradient(90deg,var(--accent),var(--accent2));
   color: var(--nav-base);
-  box-shadow: 0 12px 24px rgba(160,106,58,.18);
+
+  box-shadow: 0 12px 24px rgba(37,99,235,.14);
 }
 
 /* ghost */
@@ -1007,7 +852,7 @@ body.debug .works-container::after{
 #services .h2{
   font-size: clamp(22px, 3vw, 34px);
   margin: 0 0 10px;
-  color: var(--choco);
+  color: #3b5376;
   font-family: "Kiwi Maru","M PLUS 1p","Noto Sans JP",sans-serif;
   font-weight: 700;
   letter-spacing: .02em;
